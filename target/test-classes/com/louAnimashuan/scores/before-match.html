@@ -215,7 +215,7 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
                 if(typeof require !== 'undefined') {
                     require({
                         paths:{
-                            "bbcdotcom":"http://static.bbci.co.uk/bbcdotcom/1.31.0/script"
+                            "bbcdotcom":"http://static.bbci.co.uk/bbcdotcom/1.33.0/script"
                         }
                     });
                 }
@@ -301,10 +301,10 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
                 <script type="text/javascript">
             /*<![CDATA[*/
             if (bbcdotcom.data.a == 1 || bbcdotcom.data.b == 1) {
-                                bbcdotcom.assetPrefix = "http://static.bbci.co.uk/bbcdotcom/1.31.0/";
-                document.write('<link rel="stylesheet" type="text/css" href="http://static.bbci.co.uk/bbcdotcom/1.31.0/style/3pt_ads.css" />');
+                                bbcdotcom.assetPrefix = "http://static.bbci.co.uk/bbcdotcom/1.33.0/";
+                document.write('<link rel="stylesheet" type="text/css" href="http://static.bbci.co.uk/bbcdotcom/1.33.0/style/3pt_ads.css" />');
                 document.write('<script type="text/javascript" src="//www.googletagservices.com/tag/js/gpt.js">\x3C/script>');
-                                document.write('<script type="text/javascript" src="http://static.bbci.co.uk/bbcdotcom/1.31.0/script/dist/bbccom_all.js">\x3C/script>');
+                                document.write('<script type="text/javascript" src="http://static.bbci.co.uk/bbcdotcom/1.33.0/script/dist/bbccom_all.js">\x3C/script>');
             }
             /*]]>*/
         </script>                                   <script type="text/javascript">                 /*<![CDATA[*/
@@ -312,11 +312,11 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
                                 BBC.adverts.setData(bbcdotcom.data);
                 bbcdotcom.config.setAdsEnabled(bbcdotcom.data.a);
                 bbcdotcom.config.setAnalyticsEnabled(bbcdotcom.data.b);
-                bbcdotcom.config.setJsPrefix("http://static.bbci.co.uk/bbcdotcom/1.31.0/script");
-                bbcdotcom.config.setAssetPrefix("http://static.bbci.co.uk/bbcdotcom/1.31.0/");
-                bbcdotcom.config.setVersion("1.31.0");
-                bbcdotcom.config.setSwfPrefix("http://static.bbci.co.uk/bbcdotcom/1.31.0/swf");
-                bbcdotcom.config.setCssPrefix("http://static.bbci.co.uk/bbcdotcom/1.31.0/style");
+                bbcdotcom.config.setJsPrefix("http://static.bbci.co.uk/bbcdotcom/1.33.0/script");
+                bbcdotcom.config.setAssetPrefix("http://static.bbci.co.uk/bbcdotcom/1.33.0/");
+                bbcdotcom.config.setVersion("1.33.0");
+                bbcdotcom.config.setSwfPrefix("http://static.bbci.co.uk/bbcdotcom/1.33.0/swf");
+                bbcdotcom.config.setCssPrefix("http://static.bbci.co.uk/bbcdotcom/1.33.0/style");
                 bbcdotcom.dataOrb = {
                     ads: bbcdotcom.data.a,
                     stats: bbcdotcom.data.b,
@@ -341,8 +341,8 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
 
                     bbcdotcom.objects('page', 'create', bbcdotcom);
                     
-                                        BBC.adverts.setScriptRoot("http://static.bbci.co.uk/bbcdotcom/1.31.0/script/");
-                    BBC.adverts.setImgRoot("http://static.bbci.co.uk/bbcdotcom/1.31.0/img/");
+                                        BBC.adverts.setScriptRoot("http://static.bbci.co.uk/bbcdotcom/1.33.0/script/");
+                    BBC.adverts.setImgRoot("http://static.bbci.co.uk/bbcdotcom/1.33.0/img/");
                     BBC.adverts.init({
                         domain: "http://www.bbc.co.uk",
                         location: window.location.pathname,
@@ -369,7 +369,7 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
         }
         /*]]>*/
         </script>
-       <script src="http://static.bbci.co.uk/id/0.35.93/modules/idcta/dist/idcta-1.min.js"></script>  <script type="text/javascript"> (function () { if (!window.require) { throw new Error('idcta: could not find require module'); } if(typeof(map) == 'undefined') { var map = {}; } if(!!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect) { document.documentElement.className += ' id-svg'; } var ptrt = RegExp("[\\?&]ptrt=([^&#]*)").exec(document.location.href); var ENDPOINT_URL = '//' + ((window.location.protocol == "https:") ? ('www.bbc.co.uk').replace("www.", "ssl.") : ('www.bbc.co.uk').replace("ssl.", "www.")); var ENDPOINT_CONFIG = ('/idcta/config?callback&amp;locale=en-GB&ptrt=' + encodeURI((ptrt ? ptrt[1] : document.location.href))).replace(/\&amp;/g, '&'); var ENDPOINT_TRANSLATIONS = '/idcta/translations?callback&locale=en-GB'; map['idapp-1'] = '//static.bbci.co.uk/idapp/0.72.58/modules/idapp/idapp-1'; map['idcta'] = 'http://static.bbci.co.uk/id/0.35.93/modules/idcta'; map['idcta/config'] = [ENDPOINT_URL + ENDPOINT_CONFIG, 'http://static.bbci.co.uk/id/0.35.93/modules/idcta/fallbackConfig']; map['idcta/translations'] = [ENDPOINT_URL + ENDPOINT_TRANSLATIONS, 'http://static.bbci.co.uk/id/0.35.93/modules/idcta/fallbackTranslations']; require({paths: map}); /* * Temporary code * To be removed when old id-statusbar-config is no longer supported */ define('id-statusbar-config', ['idcta/id-config'], function(conf) { return conf; }); define('idcta/id-statusbar-config', ['idcta/id-config'], function(conf) { return conf; }); })(); </script> <script type="text/javascript"> try { /* Users downgraded after IDP tokens were invalidated */ require(['idcta/idCookie'], function(idCookie){ idCookie.downgradeUser(); }); } catch(error) { /* Fail silently in case idCookie is not defined */ } </script>     <link rel="canonical" href="http://www.bbc.co.uk/sport/football/live-scores" /> <link rel="alternate" hreflang="en" href="http://www.bbc.com/sport/football/live-scores" /> <link rel="alternate" hreflang="en-gb" href="http://www.bbc.co.uk/sport/football/live-scores" />  <!--[if lte IE 6]> <link type="text/css" href="http://static.bbci.co.uk/sport/2.7.722/desktop/styles/ie6.css" rel="stylesheet"/> <![endif]--> <!--[if IE 7]> <link type="text/css" href="http://static.bbci.co.uk/sport/2.7.722/desktop/styles/ie7.css" rel="stylesheet"/> <![endif]--> <style type="text/css" media="screen"> .link-block { width: 100%; background-color: #FFCCCC; font-family: sans-serif; font-size: 1.2em; position: fixed; bottom: 0; } .link-block ul { text-align:center; margin: 0 auto; } .link-block li { display: inline-block; margin: 8px 10px; padding: 4px; } </style>  <link rel="stylesheet" href="http://static.bbci.co.uk/onesport/2.8.1594/css/compiled/desktop-medals.css"> <!--[if lt IE 9]> <script src="http://static.bbci.co.uk/onesport/2.8.1594/modules/vendor/html5shiv.js"></script> <![endif]-->  <script type="text/javascript"> (function (window) { window.onesport = {}; }(window)); </script> <!--[if IE 7]> <script type="text/javascript">onesport.isIE7 = true;</script> <![endif]--> <!--[if IE 8]> <script type="text/javascript">onesport.isIE8 = true;</script> <![endif]--> <script type="text/javascript"> (function (onesport) { onesport.enhanced = (onesport.isIE8 || ('addEventListener' in window && 'querySelector' in document && 'localStorage' in window)); onesport.config = {"staticPrefix":"http:\/\/static.bbci.co.uk\/onesport\/2.8.1594","inlineJs":["compiled\/inline-desktop"],"env":"live","redirection":null,"rumConfig":{"product":"sport","url_params":{"api_key":"c63bsbs8dcnzvqs3ynuagh6j"},"server":"http:\/\/bbc.api.mashery.com\/analytics","edition":"domestic"}}; onesport.moduleJs = []; onesport.currentBreakpoint = 'wide'; var docWriteScriptTag = function (path) { document.write('<script type="text/javascript" src="' + onesport.config.staticPrefix + '/js/' + path + '.js"><' + '/script>'); }, i, iLimit; for (i = 0, iLimit = onesport.config.inlineJs.length; i < iLimit; i++) { docWriteScriptTag(onesport.config.inlineJs[i]); }  define('config', function () { return onesport.config; }); define('onesport', function () { return onesport; }); }(onesport)); </script> <script> if (onesport.redirector) onesport.redirector.go(); </script>     <!--#set var="PAL_NAV_CSS_SUCCESS" value="1" --> <link rel="stylesheet" href="http://static.bbci.co.uk/onesport/2.8.1594/css/compiled/desktop-nav.css">                            </head> <body class="sport disable-wide-advert">        <!-- BBCDOTCOM body first -->
+       <script src="http://static.bbci.co.uk/id/0.36.23/modules/idcta/dist/idcta-1.min.js"></script>  <script type="text/javascript"> (function () { if (!window.require) { throw new Error('idcta: could not find require module'); } if(typeof(map) == 'undefined') { var map = {}; } if(!!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect) { document.documentElement.className += ' id-svg'; } var ptrt = RegExp("[\\?&]ptrt=([^&#]*)").exec(document.location.href); var ENDPOINT_URL = '//' + ((window.location.protocol == "https:") ? ('www.bbc.co.uk').replace("www.", "ssl.") : ('www.bbc.co.uk').replace("ssl.", "www.")); var ENDPOINT_CONFIG = ('/idcta/config?callback&amp;locale=en-GB&ptrt=' + encodeURI((ptrt ? ptrt[1] : document.location.href))).replace(/\&amp;/g, '&'); var ENDPOINT_TRANSLATIONS = '/idcta/translations?callback&locale=en-GB'; map['idapp-1'] = '//static.bbci.co.uk/idapp/0.72.58/modules/idapp/idapp-1'; map['idcta'] = 'http://static.bbci.co.uk/id/0.36.23/modules/idcta'; map['idcta/config'] = [ENDPOINT_URL + ENDPOINT_CONFIG, 'http://static.bbci.co.uk/id/0.36.23/modules/idcta/fallbackConfig']; map['idcta/translations'] = [ENDPOINT_URL + ENDPOINT_TRANSLATIONS, 'http://static.bbci.co.uk/id/0.36.23/modules/idcta/fallbackTranslations']; require({paths: map}); /* * Temporary code * To be removed when old id-statusbar-config is no longer supported */ define('id-statusbar-config', ['idcta/id-config'], function(conf) { return conf; }); define('idcta/id-statusbar-config', ['idcta/id-config'], function(conf) { return conf; }); })(); </script>     <link rel="canonical" href="http://www.bbc.co.uk/sport/football/live-scores" /> <link rel="alternate" hreflang="en" href="http://www.bbc.com/sport/football/live-scores" /> <link rel="alternate" hreflang="en-gb" href="http://www.bbc.co.uk/sport/football/live-scores" />  <!--[if lte IE 6]> <link type="text/css" href="http://static.bbci.co.uk/sport/2.7.722/desktop/styles/ie6.css" rel="stylesheet"/> <![endif]--> <!--[if IE 7]> <link type="text/css" href="http://static.bbci.co.uk/sport/2.7.722/desktop/styles/ie7.css" rel="stylesheet"/> <![endif]--> <style type="text/css" media="screen"> .link-block { width: 100%; background-color: #FFCCCC; font-family: sans-serif; font-size: 1.2em; position: fixed; bottom: 0; } .link-block ul { text-align:center; margin: 0 auto; } .link-block li { display: inline-block; margin: 8px 10px; padding: 4px; } </style>  <link rel="stylesheet" href="http://static.bbci.co.uk/onesport/2.8.1594/css/compiled/desktop-medals.css"> <!--[if lt IE 9]> <script src="http://static.bbci.co.uk/onesport/2.8.1594/modules/vendor/html5shiv.js"></script> <![endif]-->  <script type="text/javascript"> (function (window) { window.onesport = {}; }(window)); </script> <!--[if IE 7]> <script type="text/javascript">onesport.isIE7 = true;</script> <![endif]--> <!--[if IE 8]> <script type="text/javascript">onesport.isIE8 = true;</script> <![endif]--> <script type="text/javascript"> (function (onesport) { onesport.enhanced = (onesport.isIE8 || ('addEventListener' in window && 'querySelector' in document && 'localStorage' in window)); onesport.config = {"staticPrefix":"http:\/\/static.bbci.co.uk\/onesport\/2.8.1594","inlineJs":["compiled\/inline-desktop"],"env":"live","redirection":null,"rumConfig":{"product":"sport","url_params":{"api_key":"c63bsbs8dcnzvqs3ynuagh6j"},"server":"http:\/\/bbc.api.mashery.com\/analytics","edition":"domestic"}}; onesport.moduleJs = []; onesport.currentBreakpoint = 'wide'; var docWriteScriptTag = function (path) { document.write('<script type="text/javascript" src="' + onesport.config.staticPrefix + '/js/' + path + '.js"><' + '/script>'); }, i, iLimit; for (i = 0, iLimit = onesport.config.inlineJs.length; i < iLimit; i++) { docWriteScriptTag(onesport.config.inlineJs[i]); }  define('config', function () { return onesport.config; }); define('onesport', function () { return onesport; }); }(onesport)); </script> <script> if (onesport.redirector) onesport.redirector.go(); </script>     <!--#set var="PAL_NAV_CSS_SUCCESS" value="1" --> <link rel="stylesheet" href="http://static.bbci.co.uk/onesport/2.8.1594/css/compiled/desktop-nav.css">                            </head> <body class="sport disable-wide-advert">        <!-- BBCDOTCOM body first -->
                         <div id="bbccom_interstitial_ad" class="bbccom_display_none"></div>
             <div id="bbccom_interstitial" class="bbccom_display_none">
                 <script type="text/javascript">
@@ -458,12 +458,12 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
                 },
                 feedObject: {
                     updatePeriod: 30,
-                    dataSource:"http://polling.bbc.co.uk/sport/shared/football/live-scores/20161101.json",
+                    dataSource:"http://polling.bbc.co.uk/sport/shared/football/live-scores/20161105.json",
                     getDataOnLoad:false
                 }
             });
 
-            liveScoresUI.init("http://polling.bbc.co.uk", "Tue, 01 Nov 2016 00:00:00 +0000", "");
+            liveScoresUI.init("http://polling.bbc.co.uk", "Sat, 05 Nov 2016 00:00:00 +0000", "");
         });
         // Force IE7 to show the controls.
         $("td.match-score").load(function() {
@@ -516,25 +516,25 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
             }
         </script>
      </div> <div class="stats-body" role="main"> <ul id="live-score-tabs"> <li><a href="/sport/football/live-scores" class="selected" id="show_live">By Competition</a></li> <li><a href="/sport/football/live-scores/videprinter" id="show_vide">Videprinter</a></li> </ul> <div id="live-scores-body"> 
-<div id="live-scores-content-wrapper" class="competition-118999958">
+<div id="live-scores-content-wrapper" class="competition-118996114">
     <div id="live-scores-filter-bar" class="dateBar">
         <noscript>
     <div class="no-js-live-scores-day-navigator">
         <label>Choose date:</label>
         <ul>
             <li class="first">
-                                    <a href="/sport/football/live-scores/todayminus2">Sun 30 Oct</a>
+                                    <a href="/sport/football/live-scores/todayminus2">Thu 3 Nov</a>
                             </li>
             <li>
-                                    <a href="/sport/football/live-scores/yesterday">Mon 31 Oct</a>
+                                    <a href="/sport/football/live-scores/yesterday">Fri 4 Nov</a>
                             </li>
             <li>
-                                    Tue 1 Nov                            </li>
+                                    Sat 5 Nov                            </li>
             <li>
-                                    <a href="/sport/football/live-scores/tomorrow">Wed 2 Nov</a>
+                                    <a href="/sport/football/live-scores/tomorrow">Sun 6 Nov</a>
                             </li>
             <li class="tomorrow">
-                                    <a href="/sport/football/live-scores/todayplus2">Thu 3 Nov</a>
+                                    <a href="/sport/football/live-scores/todayplus2">Mon 7 Nov</a>
                             </li>
         </ul>
     </div>
@@ -545,7 +545,7 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
 ">
         <span>previous day</span>
     </button>
-    <div class="live-scores-today">Tue 1 Nov</div>
+    <div class="live-scores-today">Sat 5 Nov</div>
     <button type="button" class="    live-scores-tomorrow
 ">
         <span>next day</span>
@@ -553,7 +553,7 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
 </div>
 <div class="live-scores-dropdowns">
     <div class="drop-down-filter">
-          <noscript>  <div class="drop-down-filter" id="filter-fixtures-no-js"> <form method="get" id="filter-nav"> <fieldset> <label for="group-drop-down" class="non-js-live-scores">Show me:</label> <select id="group-drop-down" name="filter"> <option value="">Please select</option>  <optgroup label="English">   <option value="league-one" > League One (2) </option>     </optgroup>  <optgroup label="Scottish">   <option value="scottish-championship" > Scottish Championship (1) </option>    <option value="scottish-cup" > Scottish Cup (1) </option>    <option value="scottish-challenge-cup" > Scottish Challenge Cup (1) </option>   </optgroup>  <optgroup label="European &amp; World">   <option value="champions-league" selected="selected"> Champions League (8) </option>   </optgroup>  </select> <input id="filter-nav-submit" type="submit" value="Update" /> </fieldset>   <input type='hidden' name='competitionFilter' value='118999958' />  </form> </div>  </noscript> <div class="drop-down-filter live-scores-fixtures" id="filter-fixtures"> <form method="get" id="filter-nav"> <input type="hidden" class="hidden" id="day" name="day" value="today" /> <fieldset> <label for="group-drop-down">Show me:</label>    <select id="uk-group-drop-down" name="filter"> <option value="">UK &amp; Ireland Competitions</option>  <optgroup label="English">   <option value="competition-118996116" > League One (2) </option>    <option value="competition-118998041" > The FA Trophy (7) </option>   </optgroup>  <optgroup label="Scottish">   <option value="competition-118996177" > Scottish Championship (1) </option>    <option value="competition-118998098" > Scottish Cup (1) </option>    <option value="competition-118998100" > Scottish Challenge Cup (1) </option>   </optgroup>  </select>  <span>OR</span>   <select id="int-group-drop-down" name="filter"> <option value="">European &amp; International</option>  <optgroup label="European &amp; World">   <option value="competition-118999958" selected="selected"> Champions League (8) </option>   </optgroup>  </select>    <button class="update" id="filter-nav-submit">Update</button> </fieldset>   <input type='hidden' name='competitionFilter' value='118999958' />  </form> </div>     </div>
+          <noscript>  <div class="drop-down-filter" id="filter-fixtures-no-js"> <form method="get" id="filter-nav"> <fieldset> <label for="group-drop-down" class="non-js-live-scores">Show me:</label> <select id="group-drop-down" name="filter"> <option value="">Please select</option>  <optgroup label="English">   <option value="premier-league" selected="selected"> Premier League (5) </option>    <option value="championship" > Championship (11) </option>    <option value="national-league" > National League (2) </option>        <option value="fa-cup" > FA Cup (28) </option>   </optgroup>  <optgroup label="Scottish">   <option value="scottish-premiership" > Scottish Premiership (4) </option>    <option value="scottish-championship" > Scottish Championship (5) </option>    <option value="scottish-league-one" > Scottish League One (5) </option>    <option value="scottish-league-two" > Scottish League Two (5) </option>       </optgroup>  <optgroup label="Welsh">    </optgroup>  <optgroup label="Irish">    </optgroup>  <optgroup label="European &amp; World">                                </optgroup>  </select> <input id="filter-nav-submit" type="submit" value="Update" /> </fieldset>   <input type='hidden' name='competitionFilter' value='118996114' />  </form> </div>  </noscript> <div class="drop-down-filter live-scores-fixtures" id="filter-fixtures"> <form method="get" id="filter-nav"> <input type="hidden" class="hidden" id="day" name="day" value="today" /> <fieldset> <label for="group-drop-down">Show me:</label>    <select id="uk-group-drop-down" name="filter"> <option value="">UK &amp; Ireland Competitions</option>  <optgroup label="English">   <option value="competition-118996114" selected="selected"> Premier League (5) </option>    <option value="competition-118996115" > Championship (11) </option>    <option value="competition-118996118" > National League (2) </option>    <option value="competition-118996307" > National League North (8) </option>    <option value="competition-118996308" > National League South (8) </option>    <option value="competition-118998036" > FA Cup (28) </option>   </optgroup>  <optgroup label="Scottish">   <option value="competition-118996176" > Scottish Premiership (4) </option>    <option value="competition-118996177" > Scottish Championship (5) </option>    <option value="competition-118996178" > Scottish League One (5) </option>    <option value="competition-118996179" > Scottish League Two (5) </option>    <option value="competition-118999031" > Highland League (9) </option>    <option value="competition-119003997" > Lowland League (7) </option>   </optgroup>  <optgroup label="Welsh">   <option value="competition-118996207" > Welsh Premier League (5) </option>   </optgroup>  <optgroup label="Irish">   <option value="competition-118996238" > Irish Premiership (5) </option>   </optgroup>  </select>  <span>OR</span>   <select id="int-group-drop-down" name="filter"> <option value="">European &amp; International</option>  <optgroup label="European &amp; World">   <option value="competition-999999995" > Australian A-League (2) </option>    <option value="competition-119000919" > Austrian Bundesliga (2) </option>    <option value="competition-119000924" > Belgian First Division A (3) </option>    <option value="competition-999999996" > Brazilian Série A (2) </option>    <option value="competition-119000950" > Danish Superliga (1) </option>    <option value="competition-119001012" > Dutch Eredivisie (4) </option>    <option value="competition-119000981" > French Ligue 1 (6) </option>    <option value="competition-119000986" > German Bundesliga (6) </option>    <option value="competition-119001136" > Greek Superleague (3) </option>    <option value="competition-119001017" > Italian Serie A (2) </option>    <option value="competition-119001048" > Portuguese Primeira Liga (4) </option>    <option value="competition-999999990" > Russian Premier League (4) </option>    <option value="competition-119001074" > Spanish La Liga (4) </option>    <option value="competition-119001105" > Swiss Super League (2) </option>    <option value="competition-119001110" > Turkish Super Lig (4) </option>   </optgroup>  </select>    <button class="update" id="filter-nav-submit">Update</button> </fieldset>   <input type='hidden' name='competitionFilter' value='118996114' />  </form> </div>     </div>
 </div>
     </div>
     <div id="live-scores-data" class="fixtures-table full-table-medium">
@@ -569,7 +569,7 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
             <span class="live-scores-timezone">All times UK</span>
         </div>
                     <div class="competition-title-bar">
-                <h2>UEFA Champions League</h2>
+                <h2>Premier League</h2>
             </div>
                 <div id="matches-wrapper">
                             <table id="live-scores-table" class="table-stats main-table">
@@ -584,8 +584,8 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
                         <tr>
                             <td colspan="2">
                                 <div class="league-links">
-            View all <a href="/sport/football/champions-league/fixtures"> Champions League fixtures</a>
-        | View all <a href="/sport/football/champions-league/results"> Champions League results</a><br />
+            View all <a href="/sport/football/premier-league/fixtures"> Premier League fixtures</a>
+        | View all <a href="/sport/football/premier-league/results"> Premier League results</a><br />
         View all <a href="/sport/football/fixtures">Football fixtures</a> |
     View all <a href="/sport/football/results">Football results</a>
 </div>
@@ -593,178 +593,113 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
                         </tr>
                     </tfoot>
                     <tbody>
-                                                                                    <tr id="match-row-EFBO888054" class="fixture">
+                                                                                    <tr id="match-row-EFBO855272" class="fixture">
                                     <td class="match-score">
                                                                             <button class="hidden-text">Show stats panel</button>
-                                        <span class="team-home">Basel</span>
+                                        <span class="team-home">Bournemouth</span>
                                         <span class="score">
                                                                                             v
                                                                                     </span>
-                                        <span class="team-away">Paris St G</span>
+                                        <span class="team-away">Sunderland</span>
                                         <span class="elapsed-time">
-                                                                                                                                                19:45                                                                                                                                                    <span>at St Jakob-Park</span>
+                                                                                                                                                15:00                                                                                                                                                    <span>at Vitality Stadium</span>
                                                                                                                                     </span>
                                     </td>
                                                                             <td class="match-link">
-                                            <a href="/sport/football/37841728">
+                                            <a href="/sport/football/37808235">
                                                                                                     Preview
                                                                                             </a>
                                         </td>
                                                                     </tr>
-                                <tr id="match-panel-EFBO888054" class="panel-showing fixture">
+                                <tr id="match-panel-EFBO855272" class="panel-showing fixture">
                                     <td class="details-table-container" colspan="2"></td>
                                 </tr>
                                 <tr class="row-spacer"><td colspan="2">&nbsp;</td></tr>
-                                                                                                                <tr id="match-row-EFBO888075" class="fixture">
+                                                                                                                <tr id="match-row-EFBO855274" class="fixture">
                                     <td class="match-score">
                                                                             <button class="hidden-text">Show stats panel</button>
-                                        <span class="team-home">Ludo Razgd</span>
+                                        <span class="team-home">Burnley</span>
                                         <span class="score">
                                                                                             v
                                                                                     </span>
-                                        <span class="team-away">Arsenal</span>
+                                        <span class="team-away">Crystal Palace</span>
                                         <span class="elapsed-time">
-                                                                                                                                                19:45                                                                                                                                                    <span>at Vasil Levski National Stadium</span>
+                                                                                                                                                15:00                                                                                                                                                    <span>at Turf Moor</span>
                                                                                                                                     </span>
                                     </td>
                                                                             <td class="match-link">
-                                            <a href="/sport/football/37823801">
+                                            <a href="/sport/football/37808324">
                                                                                                     Preview
                                                                                             </a>
                                         </td>
                                                                     </tr>
-                                <tr id="match-panel-EFBO888075" class="panel-showing fixture">
+                                <tr id="match-panel-EFBO855274" class="panel-showing fixture">
                                     <td class="details-table-container" colspan="2"></td>
                                 </tr>
                                 <tr class="row-spacer"><td colspan="2">&nbsp;</td></tr>
-                                                                                                                <tr id="match-row-EFBO888087" class="live">
-                                    <td class="match-score">
-                                                                            <button class="hidden-text">Show stats panel</button>
-                                        <span class="team-home">Besiktas</span>
-                                        <span class="score">
-                                                                                            0 - 0                                                                                    </span>
-                                        <span class="team-away">Napoli</span>
-                                        <span class="elapsed-time">
-                                                                                            63 mins
-                                                                                    </span>
-                                    </td>
-                                                                            <td class="match-link">
-                                            <a href="/sport/football/37841714">
-                                                                                                    Go to match
-                                                                                            </a>
-                                        </td>
-                                                                    </tr>
-                                <tr id="match-panel-EFBO888087" class="panel-showing live">
-                                    <td class="details-table-container" colspan="2"></td>
-                                </tr>
-                                <tr class="row-spacer"><td colspan="2">&nbsp;</td></tr>
-                                                                                                                <tr id="match-row-EFBO888057" class="fixture">
-                                    <td class="match-score">
-                                                                            <button class="hidden-text">Show stats panel</button>
-                                        <span class="team-home">Benfica</span>
-                                        <span class="score">
-                                                                                            v
-                                                                                    </span>
-                                        <span class="team-away">Dynamo Kiev</span>
-                                        <span class="elapsed-time">
-                                                                                                                                                19:45                                                                                                                                                    <span>at Estádio da Luz</span>
-                                                                                                                                    </span>
-                                    </td>
-                                                                            <td class="match-link">
-                                            <a href="/sport/football/37841721">
-                                                                                                    Preview
-                                                                                            </a>
-                                        </td>
-                                                                    </tr>
-                                <tr id="match-panel-EFBO888057" class="panel-showing fixture">
-                                    <td class="details-table-container" colspan="2"></td>
-                                </tr>
-                                <tr class="row-spacer"><td colspan="2">&nbsp;</td></tr>
-                                                                                                                <tr id="match-row-EFBO888096" class="fixture">
-                                    <td class="match-score">
-                                                                            <button class="hidden-text">Show stats panel</button>
-                                        <span class="team-home">Bor Monchengladbach</span>
-                                        <span class="score">
-                                                                                            v
-                                                                                    </span>
-                                        <span class="team-away">Celtic</span>
-                                        <span class="elapsed-time">
-                                                                                                                                                19:45                                                                                                                                                    <span>at BORUSSIA-PARK</span>
-                                                                                                                                    </span>
-                                    </td>
-                                                                            <td class="match-link">
-                                            <a href="/sport/football/37825915">
-                                                                                                    Preview
-                                                                                            </a>
-                                        </td>
-                                                                    </tr>
-                                <tr id="match-panel-EFBO888096" class="panel-showing fixture">
-                                    <td class="details-table-container" colspan="2"></td>
-                                </tr>
-                                <tr class="row-spacer"><td colspan="2">&nbsp;</td></tr>
-                                                                                                                <tr id="match-row-EFBO888038" class="fixture">
+                                                                                                                <tr id="match-row-EFBO855279" class="fixture">
                                     <td class="match-score">
                                                                             <button class="hidden-text">Show stats panel</button>
                                         <span class="team-home">Man City</span>
                                         <span class="score">
                                                                                             v
                                                                                     </span>
-                                        <span class="team-away">Barcelona</span>
+                                        <span class="team-away">Middlesbrough</span>
                                         <span class="elapsed-time">
-                                                                                                                                                19:45                                                                                                                                                    <span>at Etihad Stadium</span>
+                                                                                                                                                15:00                                                                                                                                                    <span>at Etihad Stadium</span>
                                                                                                                                     </span>
                                     </td>
                                                                             <td class="match-link">
-                                            <a href="/sport/football/37823784">
+                                            <a href="/sport/football/37808310">
                                                                                                     Preview
                                                                                             </a>
                                         </td>
                                                                     </tr>
-                                <tr id="match-panel-EFBO888038" class="panel-showing fixture">
+                                <tr id="match-panel-EFBO855279" class="panel-showing fixture">
                                     <td class="details-table-container" colspan="2"></td>
                                 </tr>
                                 <tr class="row-spacer"><td colspan="2">&nbsp;</td></tr>
-                                                                                                                <tr id="match-row-EFBO888100" class="fixture">
+                                                                                                                <tr id="match-row-EFBO855281" class="fixture">
                                     <td class="match-score">
                                                                             <button class="hidden-text">Show stats panel</button>
-                                        <span class="team-home">Atl Madrid</span>
+                                        <span class="team-home">West Ham</span>
                                         <span class="score">
                                                                                             v
                                                                                     </span>
-                                        <span class="team-away">FC Rostov</span>
+                                        <span class="team-away">Stoke</span>
                                         <span class="elapsed-time">
-                                                                                                                                                19:45                                                                                                                                                    <span>at Vicente Calderón</span>
+                                                                                                                                                15:00                                                                                                                                                    <span>at London Stadium</span>
                                                                                                                                     </span>
                                     </td>
                                                                             <td class="match-link">
-                                            <a href="/sport/football/37841735">
+                                            <a href="/sport/football/37808219">
                                                                                                     Preview
                                                                                             </a>
                                         </td>
                                                                     </tr>
-                                <tr id="match-panel-EFBO888100" class="panel-showing fixture">
+                                <tr id="match-panel-EFBO855281" class="panel-showing fixture">
                                     <td class="details-table-container" colspan="2"></td>
                                 </tr>
                                 <tr class="row-spacer"><td colspan="2">&nbsp;</td></tr>
-                                                                                                                <tr id="match-row-EFBO888065" class="fixture">
+                                                                                                                <tr id="match-row-EFBO855275" class="fixture">
                                     <td class="match-score">
                                                                             <button class="hidden-text">Show stats panel</button>
-                                        <span class="team-home">PSV Eindhoven</span>
+                                        <span class="team-home">Chelsea</span>
                                         <span class="score">
                                                                                             v
                                                                                     </span>
-                                        <span class="team-away">Bayern Mun</span>
+                                        <span class="team-away">Everton</span>
                                         <span class="elapsed-time">
-                                                                                                                                                19:45                                                                                                                                                    <span>at Philips Stadion</span>
+                                                                                                                                                17:30                                                                                                                                                    <span>at Stamford Bridge</span>
                                                                                                                                     </span>
                                     </td>
                                                                             <td class="match-link">
-                                            <a href="/sport/football/37841742">
+                                            <a href="/sport/football/37808311">
                                                                                                     Preview
                                                                                             </a>
                                         </td>
                                                                     </tr>
-                                <tr id="match-panel-EFBO888065" class="panel-showing fixture">
+                                <tr id="match-panel-EFBO855275" class="panel-showing fixture">
                                     <td class="details-table-container" colspan="2"></td>
                                 </tr>
                                 <tr class="row-spacer"><td colspan="2">&nbsp;</td></tr>
@@ -786,7 +721,7 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
             <script type="text/javascript">
                 if (BBC.adverts.isActive('ads')) {
                     bbc_adsense_slot = "adsense_mpu"; bbc_adsense_country = "rest";
-                    document.write('<script type="text/javascript" src="http://static.bbci.co.uk/bbcdotcom/1.31.0/script/adsense_write.js">\x3C/script>');
+                    document.write('<script type="text/javascript" src="http://static.bbci.co.uk/bbcdotcom/1.33.0/script/adsense_write.js">\x3C/script>');
                 }
             </script>
         </div>
@@ -809,7 +744,7 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
                 }
             </script>
         </div>
-     <div id="table-wrapper">      <div class='container-narrow-table'> <div class='league-table table-narrow'> <h2 class='table-header'>As It Stands Table</h2>  <div class='drop-down-filter'>   <form method='get' id='ais-filter-nav'> <fieldset> <label for='single-competition-drop-down'>Show me:</label><select id='single-competition-drop-down' name='competitionFilter'>    <option value='118996114' > Premier League </option>    <option value='118996115' > Championship </option>    <option value='118996116' > League One </option>    <option value='118996117' > League Two </option>    <option value='118996118' > National League </option>    <option value='118996176' > Scottish Premiership </option>    <option value='118996177' > Scottish Championship </option>    <option value='118996178' > Scottish League One </option>    <option value='118996179' > Scottish League Two </option>    <option value='118999958' selected='selected'> Champions League </option>    <option value='118999989' > Europa League </option>    <option value='119001880' > World Cup </option>    <option value='119002035' > European Championship </option>   </select> <input id='single-filter-nav-submit' type='submit' value='Update' /> </fieldset> </form>   </div>         <h3 class='competition-name'>Group A</h3>  <table class='table-stats' > <caption>UEFA Champions League - Group A summary table; it charts each team by position, team name, games played, total goal difference and points</caption>  <thead> <tr class='header'> <th class='position' scope='col' title='Position'>Pos<span>ition</span></th> <th class='team-name' scope='col'>Team</th> <th class='played' scope='col' title='Played'>P<span>layed</span></th> <th class='goal-difference' scope='col' title='Goal Difference'>G<span>oal </span>D<span>ifference</span></th> <th class='points' scope='col' title='Points'>P<span>oin</span>ts</th> </tr> </thead>  <tfoot>   <tr> <td colspan='5'> <p class='full-table-link'><a href='/sport/football/champions-league/table'>View full table</a></p> </td> </tr>   <tr><td colspan="5">                    <div id="bbccom_sponsor_ais-table_1_2_3_4" class="bbccom_slot">
+     <div id="table-wrapper">      <div class='container-narrow-table'> <div class='league-table table-narrow'> <h2 class='table-header'>As It Stands Table</h2>  <div class='drop-down-filter'>   <form method='get' id='ais-filter-nav'> <fieldset> <label for='single-competition-drop-down'>Show me:</label><select id='single-competition-drop-down' name='competitionFilter'>    <option value='118996114' selected='selected'> Premier League </option>    <option value='118996115' > Championship </option>    <option value='118996116' > League One </option>    <option value='118996117' > League Two </option>    <option value='118996118' > National League </option>    <option value='118996176' > Scottish Premiership </option>    <option value='118996177' > Scottish Championship </option>    <option value='118996178' > Scottish League One </option>    <option value='118996179' > Scottish League Two </option>    <option value='118999958' > Champions League </option>    <option value='118999989' > Europa League </option>    <option value='119001880' > World Cup </option>    <option value='119002035' > European Championship </option>   </select> <input id='single-filter-nav-submit' type='submit' value='Update' /> </fieldset> </form>   </div>        <table class='table-stats' id='ais_table_118996114'> <caption>Premier League summary table; it charts each team by position, team name, games played, total goal difference and points</caption>  <thead> <tr class='header'> <th class='position' scope='col' title='Position'>Pos<span>ition</span></th> <th class='team-name' scope='col'>Team</th> <th class='played' scope='col' title='Played'>P<span>layed</span></th> <th class='goal-difference' scope='col' title='Goal Difference'>G<span>oal </span>D<span>ifference</span></th> <th class='points' scope='col' title='Points'>P<span>oin</span>ts</th> </tr> </thead>  <tfoot>   <tr> <td colspan='5'> <p class='full-table-link'><a href='/sport/football/premier-league/table'>View full table</a></p> </td> </tr>   <tr><td colspan="5">                    <div id="bbccom_sponsor_ais-table_1_2_3_4" class="bbccom_slot">
             <div id="bbccom_sponsor_ais-table" class="bbccom_advert bbccom_display_none">
                 <div id="bbccom_sponsor_ais-table_text">IN ASSOCIATION WITH</div>
                 <div id="bbccom_sponsor_ais-table_image">
@@ -830,15 +765,15 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
                 BBC.adverts.show("sponsor_ais-table");
             }
         </script>
-                        <div id="bbccom_sponsor_table-chlg_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_table-chlg" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_table-chlg_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_table-chlg_image">
+                        <div id="bbccom_sponsor_table-prem_1_2_3_4" class="bbccom_slot">
+            <div id="bbccom_sponsor_table-prem" class="bbccom_advert bbccom_display_none">
+                <div id="bbccom_sponsor_table-prem_text">IN ASSOCIATION WITH</div>
+                <div id="bbccom_sponsor_table-prem_image">
                     <script type="text/javascript">
                         if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_table-chlg', [1,2,3,4]);
+                            bbcdotcom.slot('sponsor_table-prem', [1,2,3,4]);
                         } else {
-                            BBC.adverts.write("sponsor_table-chlg",false);
+                            BBC.adverts.write("sponsor_table-prem",false);
                         }
                     </script>
                 </div>
@@ -848,304 +783,10 @@ function contentLoaded(d,i){var c=false,h=true,k=d.document,j=k.documentElement,
             if (window.bbcdotcom && bbcdotcom.show) {
                 bbcdotcom.show();
             } else {
-                BBC.adverts.show("sponsor_table-chlg");
+                BBC.adverts.show("sponsor_table-prem");
             }
         </script>
-    </td></tr> </tfoot>  <tbody>   <tr class='team first'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>1</span></td>   <td class='team-name'>  <a href='/sport/football/teams/arsenal'>Arsenal</a>  </td> <td class='played'>3</td> <td class='goal-difference'>8</td> <td class='points'>7</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>2</span></td>   <td class='team-name'>  Paris St G  </td> <td class='played'>3</td> <td class='goal-difference'>5</td> <td class='points'>7</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>3</span></td>   <td class='team-name'>  Ludo Razgd  </td> <td class='played'>3</td> <td class='goal-difference'>-8</td> <td class='points'>1</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>4</span></td>   <td class='team-name'>  Basel  </td> <td class='played'>3</td> <td class='goal-difference'>-5</td> <td class='points'>1</td> </tr>   </tbody>  </table>          <h3 class='competition-name'>Group B</h3>  <table class='table-stats' > <caption>UEFA Champions League - Group B summary table; it charts each team by position, team name, games played, total goal difference and points</caption>  <thead> <tr class='header'> <th class='position' scope='col' title='Position'>Pos<span>ition</span></th> <th class='team-name' scope='col'>Team</th> <th class='played' scope='col' title='Played'>P<span>layed</span></th> <th class='goal-difference' scope='col' title='Goal Difference'>G<span>oal </span>D<span>ifference</span></th> <th class='points' scope='col' title='Points'>P<span>oin</span>ts</th> </tr> </thead>  <tfoot>   <tr> <td colspan='5'> <p class='full-table-link'><a href='/sport/football/champions-league/table'>View full table</a></p> </td> </tr>   <tr><td colspan="5">                    <div id="bbccom_sponsor_ais-table_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_ais-table" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_ais-table_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_ais-table_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_ais-table', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_ais-table",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_ais-table");
-            }
-        </script>
-                        <div id="bbccom_sponsor_table-chlg_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_table-chlg" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_table-chlg_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_table-chlg_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_table-chlg', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_table-chlg",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_table-chlg");
-            }
-        </script>
-    </td></tr> </tfoot>  <tbody>   <tr class='team first'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>1</span></td>   <td class='team-name'>  Napoli  </td> <td class='played'>4</td> <td class='goal-difference'>2</td> <td class='points'>7</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>2</span></td>   <td class='team-name'>  Besiktas  </td> <td class='played'>4</td> <td class='goal-difference'>1</td> <td class='points'>6</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>3</span></td>   <td class='team-name'>  Benfica  </td> <td class='played'>3</td> <td class='goal-difference'>0</td> <td class='points'>4</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>4</span></td>   <td class='team-name'>  Dynamo Kiev  </td> <td class='played'>3</td> <td class='goal-difference'>-3</td> <td class='points'>1</td> </tr>   </tbody>  </table>          <h3 class='competition-name'>Group C</h3>  <table class='table-stats' > <caption>UEFA Champions League - Group C summary table; it charts each team by position, team name, games played, total goal difference and points</caption>  <thead> <tr class='header'> <th class='position' scope='col' title='Position'>Pos<span>ition</span></th> <th class='team-name' scope='col'>Team</th> <th class='played' scope='col' title='Played'>P<span>layed</span></th> <th class='goal-difference' scope='col' title='Goal Difference'>G<span>oal </span>D<span>ifference</span></th> <th class='points' scope='col' title='Points'>P<span>oin</span>ts</th> </tr> </thead>  <tfoot>   <tr> <td colspan='5'> <p class='full-table-link'><a href='/sport/football/champions-league/table'>View full table</a></p> </td> </tr>   <tr><td colspan="5">                    <div id="bbccom_sponsor_ais-table_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_ais-table" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_ais-table_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_ais-table_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_ais-table', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_ais-table",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_ais-table");
-            }
-        </script>
-                        <div id="bbccom_sponsor_table-chlg_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_table-chlg" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_table-chlg_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_table-chlg_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_table-chlg', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_table-chlg",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_table-chlg");
-            }
-        </script>
-    </td></tr> </tfoot>  <tbody>   <tr class='team first'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>1</span></td>   <td class='team-name'>  Barcelona  </td> <td class='played'>3</td> <td class='goal-difference'>12</td> <td class='points'>9</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>2</span></td>   <td class='team-name'>  <a href='/sport/football/teams/manchester-city'>Man City</a>  </td> <td class='played'>3</td> <td class='goal-difference'>0</td> <td class='points'>4</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>3</span></td>   <td class='team-name'>  Bor Monchengladbach  </td> <td class='played'>3</td> <td class='goal-difference'>-3</td> <td class='points'>3</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>4</span></td>   <td class='team-name'>  <a href='/sport/football/teams/celtic'>Celtic</a>  </td> <td class='played'>3</td> <td class='goal-difference'>-9</td> <td class='points'>1</td> </tr>   </tbody>  </table>          <h3 class='competition-name'>Group D</h3>  <table class='table-stats' > <caption>UEFA Champions League - Group D summary table; it charts each team by position, team name, games played, total goal difference and points</caption>  <thead> <tr class='header'> <th class='position' scope='col' title='Position'>Pos<span>ition</span></th> <th class='team-name' scope='col'>Team</th> <th class='played' scope='col' title='Played'>P<span>layed</span></th> <th class='goal-difference' scope='col' title='Goal Difference'>G<span>oal </span>D<span>ifference</span></th> <th class='points' scope='col' title='Points'>P<span>oin</span>ts</th> </tr> </thead>  <tfoot>   <tr> <td colspan='5'> <p class='full-table-link'><a href='/sport/football/champions-league/table'>View full table</a></p> </td> </tr>   <tr><td colspan="5">                    <div id="bbccom_sponsor_ais-table_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_ais-table" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_ais-table_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_ais-table_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_ais-table', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_ais-table",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_ais-table");
-            }
-        </script>
-                        <div id="bbccom_sponsor_table-chlg_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_table-chlg" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_table-chlg_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_table-chlg_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_table-chlg', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_table-chlg",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_table-chlg");
-            }
-        </script>
-    </td></tr> </tfoot>  <tbody>   <tr class='team first'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>1</span></td>   <td class='team-name'>  Atl Madrid  </td> <td class='played'>3</td> <td class='goal-difference'>3</td> <td class='points'>9</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>2</span></td>   <td class='team-name'>  Bayern Mun  </td> <td class='played'>3</td> <td class='goal-difference'>7</td> <td class='points'>6</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>3</span></td>   <td class='team-name'>  PSV Eindhoven  </td> <td class='played'>3</td> <td class='goal-difference'>-4</td> <td class='points'>1</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>4</span></td>   <td class='team-name'>  FC Rostov  </td> <td class='played'>3</td> <td class='goal-difference'>-6</td> <td class='points'>1</td> </tr>   </tbody>  </table>          <h3 class='competition-name'>Group E</h3>  <table class='table-stats' > <caption>UEFA Champions League - Group E summary table; it charts each team by position, team name, games played, total goal difference and points</caption>  <thead> <tr class='header'> <th class='position' scope='col' title='Position'>Pos<span>ition</span></th> <th class='team-name' scope='col'>Team</th> <th class='played' scope='col' title='Played'>P<span>layed</span></th> <th class='goal-difference' scope='col' title='Goal Difference'>G<span>oal </span>D<span>ifference</span></th> <th class='points' scope='col' title='Points'>P<span>oin</span>ts</th> </tr> </thead>  <tfoot>   <tr> <td colspan='5'> <p class='full-table-link'><a href='/sport/football/champions-league/table'>View full table</a></p> </td> </tr>   <tr><td colspan="5">                    <div id="bbccom_sponsor_ais-table_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_ais-table" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_ais-table_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_ais-table_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_ais-table', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_ais-table",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_ais-table");
-            }
-        </script>
-                        <div id="bbccom_sponsor_table-chlg_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_table-chlg" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_table-chlg_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_table-chlg_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_table-chlg', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_table-chlg",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_table-chlg");
-            }
-        </script>
-    </td></tr> </tfoot>  <tbody>   <tr class='team first'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>1</span></td>   <td class='team-name'>  Monaco  </td> <td class='played'>3</td> <td class='goal-difference'>1</td> <td class='points'>5</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>2</span></td>   <td class='team-name'>  <a href='/sport/football/teams/tottenham-hotspur'>Tottenham</a>  </td> <td class='played'>3</td> <td class='goal-difference'>0</td> <td class='points'>4</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>3</span></td>   <td class='team-name'>  Bayer Levkn  </td> <td class='played'>3</td> <td class='goal-difference'>0</td> <td class='points'>3</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>4</span></td>   <td class='team-name'>  CSKA  </td> <td class='played'>3</td> <td class='goal-difference'>-1</td> <td class='points'>2</td> </tr>   </tbody>  </table>          <h3 class='competition-name'>Group F</h3>  <table class='table-stats' > <caption>UEFA Champions League - Group F summary table; it charts each team by position, team name, games played, total goal difference and points</caption>  <thead> <tr class='header'> <th class='position' scope='col' title='Position'>Pos<span>ition</span></th> <th class='team-name' scope='col'>Team</th> <th class='played' scope='col' title='Played'>P<span>layed</span></th> <th class='goal-difference' scope='col' title='Goal Difference'>G<span>oal </span>D<span>ifference</span></th> <th class='points' scope='col' title='Points'>P<span>oin</span>ts</th> </tr> </thead>  <tfoot>   <tr> <td colspan='5'> <p class='full-table-link'><a href='/sport/football/champions-league/table'>View full table</a></p> </td> </tr>   <tr><td colspan="5">                    <div id="bbccom_sponsor_ais-table_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_ais-table" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_ais-table_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_ais-table_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_ais-table', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_ais-table",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_ais-table");
-            }
-        </script>
-                        <div id="bbccom_sponsor_table-chlg_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_table-chlg" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_table-chlg_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_table-chlg_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_table-chlg', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_table-chlg",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_table-chlg");
-            }
-        </script>
-    </td></tr> </tfoot>  <tbody>   <tr class='team first'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>1</span></td>   <td class='team-name'>  Real Madrid  </td> <td class='played'>3</td> <td class='goal-difference'>5</td> <td class='points'>7</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>2</span></td>   <td class='team-name'>  Bor Dortmd  </td> <td class='played'>3</td> <td class='goal-difference'>7</td> <td class='points'>7</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>3</span></td>   <td class='team-name'>  Sporting  </td> <td class='played'>3</td> <td class='goal-difference'>0</td> <td class='points'>3</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>4</span></td>   <td class='team-name'>  Legia War  </td> <td class='played'>3</td> <td class='goal-difference'>-12</td> <td class='points'>0</td> </tr>   </tbody>  </table>          <h3 class='competition-name'>Group G</h3>  <table class='table-stats' > <caption>UEFA Champions League - Group G summary table; it charts each team by position, team name, games played, total goal difference and points</caption>  <thead> <tr class='header'> <th class='position' scope='col' title='Position'>Pos<span>ition</span></th> <th class='team-name' scope='col'>Team</th> <th class='played' scope='col' title='Played'>P<span>layed</span></th> <th class='goal-difference' scope='col' title='Goal Difference'>G<span>oal </span>D<span>ifference</span></th> <th class='points' scope='col' title='Points'>P<span>oin</span>ts</th> </tr> </thead>  <tfoot>   <tr> <td colspan='5'> <p class='full-table-link'><a href='/sport/football/champions-league/table'>View full table</a></p> </td> </tr>   <tr><td colspan="5">                    <div id="bbccom_sponsor_ais-table_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_ais-table" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_ais-table_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_ais-table_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_ais-table', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_ais-table",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_ais-table");
-            }
-        </script>
-                        <div id="bbccom_sponsor_table-chlg_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_table-chlg" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_table-chlg_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_table-chlg_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_table-chlg', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_table-chlg",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_table-chlg");
-            }
-        </script>
-    </td></tr> </tfoot>  <tbody>   <tr class='team first'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>1</span></td>   <td class='team-name'>  <a href='/sport/football/teams/leicester-city'>Leicester</a>  </td> <td class='played'>3</td> <td class='goal-difference'>5</td> <td class='points'>9</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>2</span></td>   <td class='team-name'>  FC Copenhagen  </td> <td class='played'>3</td> <td class='goal-difference'>3</td> <td class='points'>4</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>3</span></td>   <td class='team-name'>  FC Porto  </td> <td class='played'>3</td> <td class='goal-difference'>0</td> <td class='points'>4</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>4</span></td>   <td class='team-name'>  Club Brugge  </td> <td class='played'>3</td> <td class='goal-difference'>-8</td> <td class='points'>0</td> </tr>   </tbody>  </table>          <h3 class='competition-name'>Group H</h3>  <table class='table-stats' > <caption>UEFA Champions League - Group H summary table; it charts each team by position, team name, games played, total goal difference and points</caption>  <thead> <tr class='header'> <th class='position' scope='col' title='Position'>Pos<span>ition</span></th> <th class='team-name' scope='col'>Team</th> <th class='played' scope='col' title='Played'>P<span>layed</span></th> <th class='goal-difference' scope='col' title='Goal Difference'>G<span>oal </span>D<span>ifference</span></th> <th class='points' scope='col' title='Points'>P<span>oin</span>ts</th> </tr> </thead>  <tfoot>   <tr> <td colspan='5'> <p class='full-table-link'><a href='/sport/football/champions-league/table'>View full table</a></p> </td> </tr>   <tr><td colspan="5">                    <div id="bbccom_sponsor_ais-table_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_ais-table" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_ais-table_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_ais-table_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_ais-table', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_ais-table",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_ais-table");
-            }
-        </script>
-                        <div id="bbccom_sponsor_table-chlg_1_2_3_4" class="bbccom_slot">
-            <div id="bbccom_sponsor_table-chlg" class="bbccom_advert bbccom_display_none">
-                <div id="bbccom_sponsor_table-chlg_text">IN ASSOCIATION WITH</div>
-                <div id="bbccom_sponsor_table-chlg_image">
-                    <script type="text/javascript">
-                        if (window.bbcdotcom && bbcdotcom.slot) {
-                            bbcdotcom.slot('sponsor_table-chlg', [1,2,3,4]);
-                        } else {
-                            BBC.adverts.write("sponsor_table-chlg",false);
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            if (window.bbcdotcom && bbcdotcom.show) {
-                bbcdotcom.show();
-            } else {
-                BBC.adverts.show("sponsor_table-chlg");
-            }
-        </script>
-    </td></tr> </tfoot>  <tbody>   <tr class='team first'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>1</span></td>   <td class='team-name'>  Juventus  </td> <td class='played'>3</td> <td class='goal-difference'>5</td> <td class='points'>7</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>2</span></td>   <td class='team-name'>  Sevilla  </td> <td class='played'>3</td> <td class='goal-difference'>2</td> <td class='points'>7</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>3</span></td>   <td class='team-name'>  Lyon  </td> <td class='played'>3</td> <td class='goal-difference'>1</td> <td class='points'>3</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>4</span></td>   <td class='team-name'>  Dinamo Zagreb  </td> <td class='played'>3</td> <td class='goal-difference'>-8</td> <td class='points'>0</td> </tr>   </tbody>  </table>      </div> </div>   <script type="text/javascript"> require( { baseUrl: "http://static.bbci.co.uk/sport/2.7.722/desktop/modules/" }, ['jquery-1','jsonloader', 'aistable'], function($, jsonLoader, aisTable) { aisTable.init( 'http://polling.bbc.co.uk/sport/shared/football/as-it-stands/', '118999958' ); } );  </script>     </div>         <div id="bbccom_partner_buttons" class="partner_buttons_4cols bbccom_display_none">
+    </td></tr> </tfoot>  <tbody>   <tr class='team first'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>1</span></td>   <td class='team-name'>  <a href='/sport/football/teams/manchester-city'>Man City</a>  </td> <td class='played'>10</td> <td class='goal-difference'>15</td> <td class='points'>23</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>2</span></td>   <td class='team-name'>  <a href='/sport/football/teams/arsenal'>Arsenal</a>  </td> <td class='played'>10</td> <td class='goal-difference'>13</td> <td class='points'>23</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>3</span></td>   <td class='team-name'>  <a href='/sport/football/teams/liverpool'>Liverpool</a>  </td> <td class='played'>10</td> <td class='goal-difference'>11</td> <td class='points'>23</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>4</span></td>   <td class='team-name'>  <a href='/sport/football/teams/chelsea'>Chelsea</a>  </td> <td class='played'>10</td> <td class='goal-difference'>12</td> <td class='points'>22</td> </tr>    <tr class='team divider'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>5</span></td>   <td class='team-name'>  <a href='/sport/football/teams/tottenham-hotspur'>Tottenham</a>  </td> <td class='played'>10</td> <td class='goal-difference'>9</td> <td class='points'>20</td> </tr>    <tr class='team divider'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>6</span></td>   <td class='team-name'>  <a href='/sport/football/teams/everton'>Everton</a>  </td> <td class='played'>10</td> <td class='goal-difference'>7</td> <td class='points'>18</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>7</span></td>   <td class='team-name'>  <a href='/sport/football/teams/watford'>Watford</a>  </td> <td class='played'>10</td> <td class='goal-difference'>1</td> <td class='points'>15</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>8</span></td>   <td class='team-name'>  <a href='/sport/football/teams/manchester-united'>Man Utd</a>  </td> <td class='played'>10</td> <td class='goal-difference'>1</td> <td class='points'>15</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>9</span></td>   <td class='team-name'>  <a href='/sport/football/teams/southampton'>Southampton</a>  </td> <td class='played'>10</td> <td class='goal-difference'>1</td> <td class='points'>13</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>10</span></td>   <td class='team-name'>  <a href='/sport/football/teams/afc-bournemouth'>Bournemouth</a>  </td> <td class='played'>10</td> <td class='goal-difference'>-2</td> <td class='points'>12</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>11</span></td>   <td class='team-name'>  <a href='/sport/football/teams/leicester-city'>Leicester</a>  </td> <td class='played'>10</td> <td class='goal-difference'>-4</td> <td class='points'>12</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>12</span></td>   <td class='team-name'>  <a href='/sport/football/teams/stoke-city'>Stoke</a>  </td> <td class='played'>10</td> <td class='goal-difference'>-5</td> <td class='points'>12</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>13</span></td>   <td class='team-name'>  <a href='/sport/football/teams/crystal-palace'>Crystal Palace</a>  </td> <td class='played'>10</td> <td class='goal-difference'>-2</td> <td class='points'>11</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>14</span></td>   <td class='team-name'>  <a href='/sport/football/teams/burnley'>Burnley</a>  </td> <td class='played'>10</td> <td class='goal-difference'>-5</td> <td class='points'>11</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>15</span></td>   <td class='team-name'>  <a href='/sport/football/teams/middlesbrough'>Middlesbrough</a>  </td> <td class='played'>10</td> <td class='goal-difference'>-2</td> <td class='points'>10</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>16</span></td>   <td class='team-name'>  <a href='/sport/football/teams/west-bromwich-albion'>West Brom</a>  </td> <td class='played'>10</td> <td class='goal-difference'>-4</td> <td class='points'>10</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>17</span></td>   <td class='team-name'>  <a href='/sport/football/teams/west-ham-united'>West Ham</a>  </td> <td class='played'>10</td> <td class='goal-difference'>-9</td> <td class='points'>10</td> </tr>    <tr class='team divider'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>18</span></td>   <td class='team-name'>  <a href='/sport/football/teams/hull-city'>Hull</a>  </td> <td class='played'>10</td> <td class='goal-difference'>-15</td> <td class='points'>7</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>19</span></td>   <td class='team-name'>  <a href='/sport/football/teams/swansea-city'>Swansea</a>  </td> <td class='played'>10</td> <td class='goal-difference'>-9</td> <td class='points'>5</td> </tr>    <tr class='team'>   <td class='position'><span class='no-movement'>No movement</span> <span class='position-number'>20</span></td>   <td class='team-name'>  <a href='/sport/football/teams/sunderland'>Sunderland</a>  </td> <td class='played'>10</td> <td class='goal-difference'>-13</td> <td class='points'>2</td> </tr>   </tbody>  </table>     </div> </div>   <script type="text/javascript"> require( { baseUrl: "http://static.bbci.co.uk/sport/2.7.722/desktop/modules/" }, ['jquery-1','jsonloader', 'aistable'], function($, jsonLoader, aisTable) { aisTable.init( 'http://polling.bbc.co.uk/sport/shared/football/as-it-stands/', '118996114' ); } );  </script>     </div>         <div id="bbccom_partner_buttons" class="partner_buttons_4cols bbccom_display_none">
         <div class="bbccom_text_left">Advertising Partners</div>
         <div class="row1">
             <div id="bbccom_partner_button1" class="col1">

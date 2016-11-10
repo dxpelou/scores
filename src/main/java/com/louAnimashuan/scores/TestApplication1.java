@@ -20,5 +20,4 @@ public class TestApplication1 {
 			System.out.print( "get all:" + game.getAll());
 		}
 	}
-
 }

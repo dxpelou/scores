@@ -41,7 +41,7 @@ public class ScoresSpeechlet implements Speechlet {
 		
 		if("getScores".equals(intentName)){
 			
-			return getScores (intent, session);
+			return getScores(intent, session);
 		}
 		
 		return null;

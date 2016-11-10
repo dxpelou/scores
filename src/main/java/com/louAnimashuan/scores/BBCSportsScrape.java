@@ -2,17 +2,18 @@ package com.louAnimashuan.scores;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.amazon.speech.slu.Slot;
+
 public class BBCSportsScrape {
 	
 	private String scoresURL = "http://www.bbc.co.uk/sport/football/live-scores";
-	private String isPlayingURL = "http://www.bbc.co.uk/sport/football/live-scores";
-	
 	
 	public BBCSportsScrape(){
 		
@@ -22,7 +23,7 @@ public class BBCSportsScrape {
 		return Jsoup.connect(scoresURL).get();
 	}
 	
-	public ArrayList<Game> getScores(Document bbcDoc) throws IOException{ 
+	public ArrayList<Game> getScores(Document bbcDoc) throws IOException{ //TODO change name to get matches
 	
 		String homeTeam = null;
 		String awayTeam = null;
@@ -82,6 +83,43 @@ public class BBCSportsScrape {
 			games.add(new Game(homeTeam, awayTeam, score, null, MatchStatus.FINISHED));
 		}
 		return games;
+	}
+	
+	
+	
+	public Game getScore(Document bbcDoc, Map<String, Slot> slots){
+		Elements fixtures = bbcDoc.select(".fixture");
+		Elements liveMatches = bbcDoc.select(".live");
+		Elements results = bbcDoc.select(".result");
+		
+		String homeTeam = slots.get("HomeTeam").getValue();
+		String awayTeam = null;
+		
+		if(slots.containsKey("AwayTeam")){
+			awayTeam = slots.get("AwayTeam").getValue();
+		}
+		
+		for(Element match : fixtures ){
+			try {
+				 String home = match.select(".team-home").first().text();
+				 String away = match.select(".team-away").first().text();
+				 if (homeTeam.equals(home) || homeTeam.equals(away)){
+					 String score = match.select(".score").first().text();
+					 String time = match.select(".elapsedTime").first().text();
+					 return new Game(home, away, score, time, MatchStatus.FINISHED );
+				 }
+				 
+				 if( (awayTeam != null && awayTeam.equals(home)) || (awayTeam != null && awayTeam.equals(away))){
+					 String score = match.select(".score").first().text();
+					 String time = match.select(".elapsedTime").first().text();
+				 }
+				
+			}catch(NullPointerException e){
+				
+			}
+		}
+		
+		return null;
 	}
 	
 	
