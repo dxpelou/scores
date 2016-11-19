@@ -15,6 +15,9 @@ import com.amazon.speech.speechlet.SessionStartedRequest;
 import com.amazon.speech.speechlet.Speechlet;
 import com.amazon.speech.speechlet.SpeechletException;
 import com.amazon.speech.speechlet.SpeechletResponse;
+import com.amazon.speech.ui.PlainTextOutputSpeech;
+import com.amazon.speech.ui.Reprompt;
+import com.amazon.speech.ui.SimpleCard;
 
 
 public class ScoresSpeechlet implements Speechlet {
@@ -43,7 +46,6 @@ public class ScoresSpeechlet implements Speechlet {
 			
 			return getScores(intent, session);
 		}
-		
 		return null;
 	}
 
@@ -52,19 +54,46 @@ public class ScoresSpeechlet implements Speechlet {
 	public void onSessionEnded(SessionEndedRequest request, Session session) throws SpeechletException {
 		log.info("onSessionEnded requestId={}, sessionId={}", request.getRequestId(),
                 session.getSessionId());
-		
 	}
 	
 	
 	private SpeechletResponse getScores(Intent intent, Session session){
-		
 		Map<String, Slot> chosenTeams = intent.getSlots();
+		StringBuilder speechText = new StringBuilder("the results of the ");
+		boolean twoSlots = false;
 		
+		speechText.append(chosenTeams.get("homeTeam").getValue());
+		
+		if (chosenTeams.containsKey("awayTeam")){
+			twoSlots = true;
+			speechText.append(chosenTeams.get("awayTeam").getValue());
+		}
+		
+		
+		
+		
+		SimpleCard card = new SimpleCard();
+		card.setTitle("");
+		card.setContent(speechText.toString());
+		
+		PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
+		speech.setText(speechText.toString());
+		
+		Reprompt reprompt = new Reprompt();
+		reprompt.setOutputSpeech(speech);
+
+		
+		
+		
+		return SpeechletResponse.newAskResponse(speech, reprompt, card);
+	}
+	
+	
+	
+	private SpeechletResponse welcomeMessage(){
 		
 		return null;
 	}
-	
-	//TODO add welcome message
 	
 	//TODO implement getScores response
 

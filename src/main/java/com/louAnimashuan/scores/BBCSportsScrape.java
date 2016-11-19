@@ -146,13 +146,13 @@ public class BBCSportsScrape {
 				 
 				 	if (homeTeam.equals(home) || homeTeam.equals(away)){
 					String score = match.select(".score").first().text();
-					String time = match.select(".elapsedTime").first().text();
+					String time = match.select(".elapsed-time").first().text();
 					return new Game(home, away, score, time, MatchStatus.PLAYING );
 					}
 							 
 					if( (awayTeam != null && awayTeam.equals(home)) || (awayTeam != null && awayTeam.equals(away))){
 						String score = match.select(".score").first().text();
-						String time = match.select(".elapsedTime").first().text();
+						String time = match.select(".elapsed-time").first().text();
 						return new Game(home, away, score, time, MatchStatus.PLAYING );
 					}
 			}catch(NullPointerException e){
@@ -167,14 +167,14 @@ public class BBCSportsScrape {
 				 
 					if (homeTeam.equals(home) || homeTeam.equals(away)){
 					String score = match.select(".score").first().text();
-					String time = match.select(".elapsedTime").first().text();
+					String time = match.select(".elapsed-time").first().text();
 					return new Game(home, away, score, time, MatchStatus.FINISHED );
 						}else{
 							System.out.println("not found home");
 						}
 						if( (awayTeam != null && awayTeam.equals(home)) || (awayTeam != null && awayTeam.equals(away))){
 							String score = match.select(".score").first().text();
-							String time = match.select(".elapsedTime").first().text();
+							String time = match.select(".elapsed-time").first().text();
 							return new Game(home, away, score, time, MatchStatus.FINISHED );
 							 }
 			}catch(NullPointerException e){

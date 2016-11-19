@@ -28,8 +28,6 @@ public class Game {
 		this.awayTeam = away;
 		setScore(score);
 		this.time = time;
-		
-		System.out.println("game created");
 	}
 	
 	
