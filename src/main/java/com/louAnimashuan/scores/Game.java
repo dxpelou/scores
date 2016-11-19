@@ -28,6 +28,8 @@ public class Game {
 		this.awayTeam = away;
 		setScore(score);
 		this.time = time;
+		
+		System.out.println("game created");
 	}
 	
 	
@@ -36,7 +38,7 @@ public class Game {
 		if(matchStatus == MatchStatus.PLAYING || matchStatus == MatchStatus.FINISHED ){
 			scores = score.split(" - ");
 			this.homeScore = Integer.parseInt(scores[0]);
-			this.awayScore =Integer.parseInt(scores[1]);
+			this.awayScore = Integer.parseInt(scores[1]);
 		}
 	}
 	
