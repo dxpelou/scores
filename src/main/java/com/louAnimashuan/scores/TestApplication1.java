@@ -18,17 +18,16 @@ public class TestApplication1 {
 		
 		BBCSportsScrape bbcss = new BBCSportsScrape();
 		Document doc = bbcss.getDocument();
-		// games = bbcss.getScores(doc);
-		game2 = bbcss.getScore(doc, "Arsenal", null);
-		
-		//for(Game game : games){
-		//System.out.println( "get all:" + game.getAll());
 	    //}
-		if(game2 == null){
+		
+	/*	if(game2 == null){
 		System.out.println("game is null");
 		}else{
 			System.out.println(game2.getHomeTeam());
 		}
+		*/
+		
+		ScoresSpeechlet speechlet = new ScoresSpeechlet();
 		
 	
 	}
