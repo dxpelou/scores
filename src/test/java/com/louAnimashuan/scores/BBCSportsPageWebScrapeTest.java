@@ -56,17 +56,63 @@ public class BBCSportsPageWebScrapeTest {
 		try{
 			File duringInput = new File("during-match2.html"); // TODO implemented as resource
 			File beforeInput = new File("before-match2.html");
+			File afterInput = new File("after-match.html");
 			
 			//File input = new File("/Users/louanimashaun/Documents/Amazon Alexa/Scores/scores/src/test/java/com/louAnimashuan/scores/before-match2.html");
 			this.bbcFixture = Jsoup.parse(beforeInput, "UTF-8");
 			this.bbcLiveMatch = Jsoup.parse(duringInput, "UTF-8");
-			System.out.println(bbcFixture.toString());
-			System.out.println(bbcLiveMatch.toString());
+			this.bbcResult = Jsoup.parse(afterInput, "UTF-8");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
 		speechlet = new ScoresSpeechlet();
+	}
+	
+	@Test
+	public void getFixtureTest(){
+		String home = "Chelsea";
+		String away = "Everton";
+		String time = "17:30";
+		Match fixture = BBCSportsScrape.getFixture(bbcFixture, home, away);
+		AssertFixture(home, away, time, fixture);
+	}
+	
+	@Test
+	public void getLiveMatchTest(){
+		String home = "Arsenal";
+		String away = "Chelsea";
+		int homeScore = 0;
+		int awayScore = 0;
+		String time = "12 mins";
+		
+		Match liveMatch = BBCSportsScrape.getLiveMatch(bbcLiveMatch, home, away);
+		AssertLiveMatch(home, away, homeScore,  awayScore, time, liveMatch);
+	}
+
+	
+	@Test
+	public void getResultTest(){
+		String home = "Bournemouth";
+		String away = "Manchester City";
+		int homeScore = 0;
+		int awayScore = 2;
+		Match result = BBCSportsScrape.getResult(bbcResult, home, away);
+		AssertResult(home, away, homeScore, awayScore, result);
+	}
+	
+	@Test
+	public void speechletResponseTest() throws SpeechletException{
+		IntentRequest request =  buildIntentRequest("Bournemouth", "Manchester City","GetResultIntent");
+		Session session = buildSession("123456789");
+		
+		SpeechletResponse response = speechlet.onIntent(request, session);
+		response.getCard().getTitle();
+		OutputSpeech outputSpeech = response.getOutputSpeech();
+		
+		String speech = ((PlainTextOutputSpeech)outputSpeech).getText();
+		
+		Assert.assertEquals("The result of the Bournemouth, Manchester City match is 0 2", speech);
 	}
 	
 	/*@Test
@@ -78,22 +124,7 @@ public class BBCSportsPageWebScrapeTest {
 		Game game = scrape.getScore(bbcFixture, "Arsenal",  "Chelsea");
 		Assert.assertEquals(game.getHomeTeam(),"Arsenal");
 		Assert.assertEquals(game.getAwayTeam(), "Chelsea");
-	}
-	
-	@Test
-	public void speechletResponseTest() throws SpeechletException{
-		IntentRequest request =  buildIntentRequest("Arsenal", "Chelsea","getScoresIntent");
-		Session session = buildSession("123456789");
-		
-		SpeechletResponse response = speechlet.onIntent(request, session);
-		response.getCard().getTitle();
-		OutputSpeech outputSpeech = response.getOutputSpeech();
-		
-		String speech = ((PlainTextOutputSpeech)outputSpeech).getText();
-		
-		Assert.assertEquals(speech,"the results of the Chelsea Arsenal game is00");
-	}
-	
+	} 
 
 	@Test
 	public void test2() throws SpeechletException {
@@ -108,56 +139,18 @@ public class BBCSportsPageWebScrapeTest {
 		
 		//Assert.assertEquals(speech,"the results of the Chelsea Arsenal game is00"); 
 	}
-	
-	
-	//TODO finish getFixture test
-	@Test
-	public void getFixtureTest(){
-		String home = "Chelsea";
-		String away = "Everton";
-		String time = "17:30";
-		Match fixture = BBCSportsScrape.getFixture(bbcFixture, home, away);
-		System.out.println("getFixtureTest: " +fixture.getAllParameters());
-		AssertFixture(fixture, home, away, time );
-	}
-	
-	
-	
-	//TODO finish getLiveMatch test
-	public void getLiveMatchTest(){
-		String home = "Arsenal";
-		String away = "Chelsea";
-		int homeScore = 1;
-		int awayScore = 0;
-		String time = "12 mins";
-		
-		Match liveMatch = BBCSportsScrape.getLiveMatch(bbcLiveMatch, home, away);
-		AssertLiveMatch(liveMatch, home, away, homeScore,  awayScore, time);
-	}
-	
-	
-	
-	//TODO finish getReulst test
-	public void getResultTest(){
-		String home = "Besiktas ";
-		String away = "Napol";
-		int homeScore = 1;
-		int awayScore = 1;
-		
-		Match result = BBCSportsScrape.getResult(bbcLiveMatch, home, away);
-		//AssertResult(result, home, away, homeScore, awayScore);
-	}
-	
+	*/
 	
 	
 	public IntentRequest buildIntentRequest(String home, String away, String IntentName){
-		Slot homeSlot = Slot.builder().withName("Home").withValue(home).build();
-		Slot awaySlot = Slot.builder().withName("Away").withValue(away).build();
+		Slot homeSlot = Slot.builder().withName("HomeTeam").withValue(home).build();
+		Slot awaySlot = Slot.builder().withName("AwayTeam").withValue(away).build();
 		Map slots = new HashMap();
 		slots.put("Home", homeSlot);
 		slots.put("Away", awaySlot);
 		
 		Intent intent = Intent.builder().withName(IntentName).withSlots(slots).build();
+		System.out.println("Mock Intent Name: " + intent.getName());
 		return IntentRequest.builder().withIntent(intent).withRequestId("000000000").build();
 	}
 	
@@ -169,30 +162,30 @@ public class BBCSportsPageWebScrapeTest {
 	
 	
 	
-	// TODO check Match class on how to handle a fixture
-	public void AssertFixture(Match fixture, String home, String away, String time){
-		Assert.assertEquals(fixture.getHomeTeam(), home);
-		Assert.assertEquals(fixture.getAwayTeam(), away);
-		Assert.assertEquals(fixture.getTime(), time);
+	public void AssertFixture(String home, String away, String time,Match fixture){
+		Assert.assertEquals(home, fixture.getHomeTeam());
+		Assert.assertEquals(away, fixture.getAwayTeam());
+		Assert.assertEquals(time, fixture.getTime());
 		// TODO Assert that homeScore and awaySCore equal null, as match has not started
 	}
 	
 	
 	
-	public void AssertLiveMatch(Match liveMatch, String home , String away, int homeScore, int awayScore, String time){
-		Assert.assertEquals(liveMatch.getHomeTeam(), home);
-		Assert.assertEquals(liveMatch.getAwayTeam(), away);
-		Assert.assertEquals(liveMatch.getHomeScore(), homeScore);
-		Assert.assertEquals(liveMatch.getAwayScore(), awayScore);
-		Assert.assertEquals(liveMatch.getTime(), time);
+	public void AssertLiveMatch(String home , String away, int homeScore, int awayScore, String time, Match liveMatch){
+		Assert.assertEquals(home, liveMatch.getHomeTeam());
+		Assert.assertEquals(away, liveMatch.getAwayTeam());
+		Assert.assertEquals(homeScore, liveMatch.getHomeScore());
+		Assert.assertEquals(awayScore,liveMatch.getAwayScore());
+		Assert.assertEquals(time, liveMatch.getTime());
 	}
+
 	
-	public void AssertResult(Match result, String home, String away, int homeScore, int awayScore ){
-		Assert.assertEquals(result.getHomeTeam(), home);
-		Assert.assertEquals(result.getAwayTeam(), away);
-		Assert.assertEquals(result.getHomeScore(), homeScore);
-		Assert.assertEquals(result.getAwayScore(), awayScore);
-	} */
+	public void AssertResult(String home, String away, int homeScore, int awayScore, Match result ){
+		Assert.assertEquals(home, result.getHomeTeam());
+		Assert.assertEquals(away, result.getAwayTeam());
+		Assert.assertEquals(homeScore, result.getHomeScore());
+		Assert.assertEquals(awayScore, result.getAwayScore());
+	} 
 	
 	
 	

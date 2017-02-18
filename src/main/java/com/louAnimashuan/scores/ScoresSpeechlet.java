@@ -1,8 +1,10 @@
 package com.louAnimashuan.scores;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +39,7 @@ public class ScoresSpeechlet implements Speechlet {
                 session.getSessionId());
         return welcomeMessage();
 	}
+	
 
 	public SpeechletResponse onIntent(final IntentRequest request, final Session session) throws SpeechletException {
 		log.info("onIntent requestId={}, sessionId={}", request.getRequestId(),
@@ -44,19 +47,30 @@ public class ScoresSpeechlet implements Speechlet {
 
 		Intent intent = request.getIntent();
 		String intentName = (intent != null) ? intent.getName() : null;
+		System.out.println("Intent Recieved: "+ intentName);
 		Document doc = null;
 		
+		//Test Code
+		File afterInput = new File("after-match.html");
+		try {
+			doc = Jsoup.parse(afterInput, "UTF-8");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		/*
 		try {
 			doc = new BBCSportsScrape().getDocument();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		*/
 		if("GetScoresIntent".equals(intentName)){
 			System.out.println("GetScoresIntent Recieved");
 			return getScores(intent, session); 
-		} else if("GetLiveMatchIntent".equals(intentName)) {
+		}else if("GetLiveMatchIntent".equals(intentName)) {
 			System.out.println("GetLiveMatchIntent recieved");
 			return requestLiveMatch(intent, session, doc);
 		}else if("GetResultIntent".equals(intentName)){
@@ -74,7 +88,7 @@ public class ScoresSpeechlet implements Speechlet {
                 session.getSessionId());
 	}
 	
-	 
+	//DEPRICATED 
 	private SpeechletResponse getScores(Intent intent, Session session){
 		
 		Map<String, Slot> chosenTeams = intent.getSlots();
@@ -229,16 +243,19 @@ public class ScoresSpeechlet implements Speechlet {
 	}
 	
 	private SpeechletResponse requestResult(Intent intent, Session session, Document doc){
-		
+		System.out.println("requestResult called");
 		Map<String, Slot> chosenTeams = intent.getSlots();
-		Slot home = chosenTeams.get("HomeTeam");
-		Slot away = chosenTeams.get("AwayTeam");
+		Slot home = chosenTeams.get("Home");
+		Slot away = chosenTeams.get("Away");
 		
 		Match result = null;
 		PlainTextOutputSpeech speech = null;
 		SimpleCard card = null;
 		Reprompt reprompt = null;
-		
+		//System.out.println("requestResult called2");
+		//System.out.format("home: %s away: %s ",home.getValue() , away.getValue());
+		System.out.println(home.getValue());
+		System.out.println(home.getValue());
 		try{
 			result = BBCSportsScrape.getResult(doc, home.getValue(), away.getValue());
 			System.out.println("Found Result Element");
@@ -248,13 +265,17 @@ public class ScoresSpeechlet implements Speechlet {
 				result = BBCSportsScrape.getLiveMatch(doc, home.getValue(), away.getValue());
 				System.out.println("Found live Match");
 			}catch(NullPointerException p){
+				System.out.println("did not find live Match");
 				try{
 					result = BBCSportsScrape.getFixture(doc , home.getValue(), away.getValue());
+					System.out.println("Found fixture");
 				}catch(NullPointerException e){
-					
 					String speechText = "I could not find the match you requested";
+					speech = new PlainTextOutputSpeech(); 
 					speech.setText(speechText);
 					
+					reprompt = new Reprompt();
+					reprompt.setOutputSpeech(speech);
 					return SpeechletResponse.newAskResponse( speech, reprompt, createCard(speech, "Match not found"));
 				}
 				
@@ -268,12 +289,13 @@ public class ScoresSpeechlet implements Speechlet {
 		
 		
 		//TODO change output speech
-		
 		speech = createLiveMatchScoreSpeech(result);
 		card = createCard(speech, "Football Scores");
 		
 		reprompt = new Reprompt();
 		reprompt.setOutputSpeech(speech);
+		
+		System.out.println(speech);
 	
 		return SpeechletResponse.newAskResponse(speech, reprompt, card);
 	}
@@ -291,11 +313,12 @@ public class ScoresSpeechlet implements Speechlet {
 	
 	
 	private PlainTextOutputSpeech createLiveMatchScoreSpeech(Match match){
-		StringBuilder speechText = new StringBuilder("The results of the ");
+		String speechText;
 		
-		speechText.append(match.getHomeTeam() + ", " + match.getAwayTeam() + "game is " + match.getHomeScore() + match.getAwayScore());
+		speechText = String.format("The result of the %s, %s match is %d %d", match.getHomeTeam(), match.getAwayTeam(), match.getHomeScore(), match.getAwayScore());
+		
 		PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
-		outputSpeech.setText(speechText.toString());
+		outputSpeech.setText(speechText);
 		return outputSpeech;
 	}
 	

@@ -3,6 +3,8 @@ package com.louAnimashuan.scores;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -19,7 +21,7 @@ public class BBCSportsScrape {
 	
 	}
 	
-	public Document getDocument() throws IOException{
+	public  Document getDocument() throws IOException{
 		return Jsoup.connect(bbcSportsURL).get();
 	}
 	
@@ -82,6 +84,7 @@ public class BBCSportsScrape {
 			
 			games.add(new Game(homeTeam, awayTeam, score, null, MatchStatus.FINISHED));
 		}
+	
 		return games;
 	}
 	
@@ -206,29 +209,28 @@ public class BBCSportsScrape {
 		String awayTeam = a;
 		
 		for(Element match : fixtures ){
-			System.out.println("size of fixture(s): "+fixtures.size());
 			try {
 				 String home = match.select(".team-home").first().text();
 				 String away = match.select(".team-away").first().text();
-				 System.out.println("*"+home +"*"+away+"*");
 				 if (homeTeam.equals(home)|| homeTeam.equals(away)){
 					 String score = match.select(".score").first().text();
 					 String time = match.select(".elapsed-time").first().text();
+					 System.out.println(time);
+					 time = time.split(" ", 2)[0];
+					 System.out.println(time);
 					 return new Match(home, away, score, time, MatchStatus.TOSTART);
-				 }else{
-					 System.out.println("not found home fixtures");
 				 }
 				 
 				 if( (awayTeam != null && awayTeam.equals(home)) || (awayTeam != null && awayTeam.equals(away))){
 					 String score = match.select(".score").first().text();
 					 String time = match.select(".elapsedTime").first().text();
-					 System.out.println("");
+					 String pattern = "([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]";
+					 Pattern r = Pattern.compile(pattern);
+					 time = r.matcher(time).group(0);
+					 
 					 return new Match(home, away, score, time, MatchStatus.TOSTART );
-				 }else{
-					 System.out.println("not found away fixtures");
 				 }
 			}catch(NullPointerException e){
-				System.out.println("continue fixtures");
 				continue;
 			}
 		}
@@ -273,22 +275,23 @@ public class BBCSportsScrape {
 	}
 	
 	public static Match getResult(Document bbcDoc, String h, String a){
-		Elements results = bbcDoc.select(".result");
-		
+		Elements results = bbcDoc.select(".report");
+		//System.out.println("Size of result: " +results.size());
 		String homeTeam = h;
 		String awayTeam = a;
 		
 		for (Element match : results){
-			System.out.println("Size of result: " +results.size());
 			try {
 				 String home = match.select(".team-home").first().text();
 				 String away = match.select(".team-away").first().text();
 				 
+				 //System.out.format("home: %s homeAssert: %s, away: %s awayAssert:%s", home, away, h, a);
+				 
 					if (homeTeam.equals(home) || homeTeam.equals(away)){
-					String score = match.select(".score").first().text();
-					String time = match.select(".elapsed-time").first().text();
-					return new Match(home, away, score, time, MatchStatus.FINISHED);
-						}else{
+						String score = match.select(".score").first().text();
+						String time = match.select(".elapsed-time").first().text();
+						return new Match(home, away, score, time, MatchStatus.FINISHED);
+					}else{
 							System.out.println("not found home result");
 						}
 					if( (awayTeam != null && awayTeam.equals(home)) || (awayTeam != null && awayTeam.equals(away))){
