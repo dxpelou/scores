@@ -40,6 +40,28 @@ public class ScoresSpeechlet implements Speechlet {
         return welcomeMessage();
 	}
 	
+	public SpeechletResponse onIntentTest(final IntentRequest request, final Session session, Document doc) throws SpeechletException{
+		log.info("onIntent requestId={}, sessionId={}", request.getRequestId(),
+                session.getSessionId());
+		System.out.println(doc);
+
+		Intent intent = request.getIntent();
+		String intentName = (intent != null) ? intent.getName() : null;
+		System.out.println("**intent name = " +intentName);
+		
+		
+		if("GetLiveMatchIntent".equals(intentName)) {
+			System.out.println("Live match recieved");
+			return requestLiveMatch(intent, session, doc);
+		}else if("GetResultIntent".equals(intentName)){
+			return requestResult(intent, session, doc);
+		}else if("GetFixtureIntent".equals(intentName)){
+			return requestFixture(intent, session, doc);
+		}else{
+			throw new SpeechletException("Invalid Intent");
+		}
+	}
+	
 
 	public SpeechletResponse onIntent(final IntentRequest request, final Session session) throws SpeechletException {
 		log.info("onIntent requestId={}, sessionId={}", request.getRequestId(),
@@ -47,40 +69,25 @@ public class ScoresSpeechlet implements Speechlet {
 
 		Intent intent = request.getIntent();
 		String intentName = (intent != null) ? intent.getName() : null;
-		System.out.println("Intent Recieved: "+ intentName);
+		
 		Document doc = null;
-		
-		//Test Code
-		File afterInput = new File("after-match.html");
 		try {
-			doc = Jsoup.parse(afterInput, "UTF-8");
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		/*
-		try {
-			doc = new BBCSportsScrape().getDocument();
+			doc = BBCSportsScrape.getDocument();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
-		if("GetScoresIntent".equals(intentName)){
-			System.out.println("GetScoresIntent Recieved");
-			return getScores(intent, session); 
-		}else if("GetLiveMatchIntent".equals(intentName)) {
-			System.out.println("GetLiveMatchIntent recieved");
+		
+	
+		if("GetLiveMatchIntent".equals(intentName)) {
 			return requestLiveMatch(intent, session, doc);
 		}else if("GetResultIntent".equals(intentName)){
-			System.out.println("GetResultIntent recieved");
 			return requestResult(intent, session, doc);
+		}else if("GetFixtureIntent".equals(intentName)){
+			return requestFixture(intent, session, doc);
 		}else{
 			throw new SpeechletException("Invalid Intent");
 		}
 	}
-
 
 
 	public void onSessionEnded(SessionEndedRequest request, Session session) throws SpeechletException {
@@ -88,72 +95,9 @@ public class ScoresSpeechlet implements Speechlet {
                 session.getSessionId());
 	}
 	
-	//DEPRICATED 
-	private SpeechletResponse getScores(Intent intent, Session session){
-		
-		Map<String, Slot> chosenTeams = intent.getSlots();
-		StringBuilder speechText = new StringBuilder("the results of the ");
-		boolean twoSlots = false;
-		
-		
-		Slot home = chosenTeams.get("HomeTeam");
-		Slot away = chosenTeams.get("AwayTeam");
-		
-		// Test
-		System.out.println("Home and Away slots created");
-		
-		speechText.append(home.getValue());
-		
-		if (chosenTeams.containsKey("AwayTeam")){
-			twoSlots = true;
-			speechText.append(away.getValue());
-		}
-		
-		speechText.append(" game, is");
-		
-		BBCSportsScrape scrape = new BBCSportsScrape();
-		Game game = null;
-		try{
-			game = scrape.getScore( scrape.getDocument(), chosenTeams);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		//Test
-		System.out.println("succefully created game object");
-		
-		try{
-		speechText.append(game.getHomeScore());
-		speechText.append(game.getAwayScore());
-		}catch(NullPointerException e){
-			//Test
-			System.out.println("Match has yet to start");
-		//return SpeechletResponse.newAskResponse("", reprompt, card)
-		}
-		
-		//Test
-		System.out.println("speechText: " +speechText.toString());
-		
-		SimpleCard card = new SimpleCard();
-		card.setTitle(" Football Scores");
-		card.setContent(speechText.toString());
-		
-		PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
-		speech.setText(speechText.toString());
-		
-		Reprompt reprompt = new Reprompt();
-		reprompt.setOutputSpeech(speech);
-		
-		
-		return SpeechletResponse.newAskResponse(speech, reprompt, card);
-	}
+
 	
-	
-	
-	
-	// new Code 
-	
-	private SpeechletResponse requestFixture(Intent intent, Session session, Document bbc){
+	private SpeechletResponse requestFixture(Intent intent, Session session, Document doc){
 		
 		Map<String, Slot> chosenTeams = intent.getSlots();
 		Slot home = chosenTeams.get("HomeTeam");
@@ -167,21 +111,25 @@ public class ScoresSpeechlet implements Speechlet {
 		Reprompt reprompt = null;
 		
 		try{
-			fixture = BBCSportsScrape.getFixture(bbc , home.getValue(), away.getValue());
+			fixture = BBCSportsScrape.getFixture(doc , home.getValue(), away.getValue());
 		}catch(NullPointerException n){
 			try{
-				liveMatch = BBCSportsScrape.getLiveMatch(bbc, home.getValue(), away.getValue());
+				liveMatch = BBCSportsScrape.getLiveMatch(doc, home.getValue(), away.getValue());
 			}catch(NullPointerException p){
 				try{
-					result = BBCSportsScrape.getResult(bbc, home.getValue(), away.getValue());
+					result = BBCSportsScrape.getResult(doc, home.getValue(), away.getValue());
 				}catch(NullPointerException e){
 					
 					String speechText = "I could not find the match you requested";
+					
+					speech = new PlainTextOutputSpeech();
 					speech.setText(speechText);
 					
+					reprompt = new Reprompt();
+					reprompt.setOutputSpeech(speech);	
+				
 					return SpeechletResponse.newAskResponse( speech, reprompt, createCard(speech, "Match not found"));
 				}
-				
 			}
 		}
 		
@@ -193,9 +141,6 @@ public class ScoresSpeechlet implements Speechlet {
 	
 		return SpeechletResponse.newAskResponse(speech, reprompt, card);
 	}
-	
-	
-	
 	
 	
 	private SpeechletResponse requestLiveMatch(Intent intent, Session session, Document doc){
@@ -211,19 +156,27 @@ public class ScoresSpeechlet implements Speechlet {
 		SimpleCard card = null;
 		Reprompt reprompt = null;
 		
+		//System.out.format(" **home: %s, away: %s", home.getValue(), away.getValue());
+		
 		try{
-			
 			liveMatch = BBCSportsScrape.getLiveMatch(doc, home.getValue(), away.getValue());
+			System.out.println("*found live match");
 		}catch(NullPointerException n){
+			System.out.println("*not found live match");
 			try{
 				result = BBCSportsScrape.getResult(doc, home.getValue(), away.getValue());
+				System.out.println("*found result");
 			}catch(NullPointerException p){
 				try{
 					fixture = BBCSportsScrape.getFixture(doc , home.getValue(), away.getValue());
+					System.out.println("*found fixture");
 				}catch(NullPointerException e){
-					
 					String speechText = "I could not find the match you requested";
+					speech = new PlainTextOutputSpeech();
 					speech.setText(speechText);
+					
+					reprompt = new Reprompt();
+					reprompt.setOutputSpeech(speech);
 					
 					return SpeechletResponse.newAskResponse( speech, reprompt, createCard(speech, "Match not found"));
 				}
@@ -243,7 +196,7 @@ public class ScoresSpeechlet implements Speechlet {
 	}
 	
 	private SpeechletResponse requestResult(Intent intent, Session session, Document doc){
-		System.out.println("requestResult called");
+
 		Map<String, Slot> chosenTeams = intent.getSlots();
 		Slot home = chosenTeams.get("Home");
 		Slot away = chosenTeams.get("Away");
@@ -254,8 +207,7 @@ public class ScoresSpeechlet implements Speechlet {
 		Reprompt reprompt = null;
 		//System.out.println("requestResult called2");
 		//System.out.format("home: %s away: %s ",home.getValue() , away.getValue());
-		System.out.println(home.getValue());
-		System.out.println(home.getValue());
+		
 		try{
 			result = BBCSportsScrape.getResult(doc, home.getValue(), away.getValue());
 			System.out.println("Found Result Element");
@@ -282,20 +234,11 @@ public class ScoresSpeechlet implements Speechlet {
 			}
 		}
 		
-		System.out.println(result.getHomeTeam());
-		System.out.println(result.getAwayTeam());
-		System.out.println(result.getHomeScore());
-		System.out.println(result.getAwayScore());
-		
-		
-		//TODO change output speech
-		speech = createLiveMatchScoreSpeech(result);
-		card = createCard(speech, "Football Scores");
+		speech = OutputMessage.createScoreSpeech(result);
+		card = OutputMessage.createCard(speech, "Football Scores");
 		
 		reprompt = new Reprompt();
 		reprompt.setOutputSpeech(speech);
-		
-		System.out.println(speech);
 	
 		return SpeechletResponse.newAskResponse(speech, reprompt, card);
 	}

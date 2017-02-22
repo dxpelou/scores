@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Game {
-	
+	//DEPRICATED
 	private String homeTeam;
 	private String awayTeam;
 	private int homeScore;
@@ -33,7 +33,7 @@ public class Game {
 	
 	private void setScore(String score){
 		String[] scores = null;
-		if(matchStatus == MatchStatus.PLAYING || matchStatus == MatchStatus.FINISHED ){
+		if(matchStatus == MatchStatus.LIVEMATCH || matchStatus == MatchStatus.RESULT ){
 			scores = score.split(" - ");
 			this.homeScore = Integer.parseInt(scores[0]);
 			this.awayScore = Integer.parseInt(scores[1]);
@@ -62,11 +62,11 @@ public class Game {
 		Matcher duringMatcher = duringMatchPattern.matcher(status);
 		
 		if (beforeMatcher.find()){
-			this.matchStatus = MatchStatus.TOSTART; 
+			this.matchStatus = MatchStatus.FIXTURE; 
 		}else if (afterMatcher.find()){
-			this.matchStatus = MatchStatus.FINISHED; 
+			this.matchStatus = MatchStatus.RESULT; 
 		}else if (duringMatcher.find()){
-			this.matchStatus = MatchStatus.PLAYING; 
+			this.matchStatus = MatchStatus.LIVEMATCH; 
 		}else {
 			System.out.println("could not find a match for the status");
 		}

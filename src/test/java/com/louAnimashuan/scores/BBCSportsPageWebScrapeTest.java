@@ -51,10 +51,8 @@ public class BBCSportsPageWebScrapeTest {
 		// TODO try writing tests for the File object :
 		//System.out.println(new File(".").getAbsoluteFile());
 		
-		//System.out.println(new File(".").getAbsoluteFile());
-		
 		try{
-			File duringInput = new File("during-match2.html"); // TODO implemented as resource
+			File duringInput = new File("during-match2.html"); 
 			File beforeInput = new File("before-match2.html");
 			File afterInput = new File("after-match.html");
 			
@@ -102,11 +100,11 @@ public class BBCSportsPageWebScrapeTest {
 	}
 	
 	@Test
-	public void speechletResponseTest() throws SpeechletException{
+	public void speechletResponseResultTest() throws SpeechletException{
 		IntentRequest request =  buildIntentRequest("Bournemouth", "Manchester City","GetResultIntent");
 		Session session = buildSession("123456789");
 		
-		SpeechletResponse response = speechlet.onIntent(request, session);
+		SpeechletResponse response = speechlet.onIntentTest(request, session, bbcResult);
 		response.getCard().getTitle();
 		OutputSpeech outputSpeech = response.getOutputSpeech();
 		
@@ -115,31 +113,66 @@ public class BBCSportsPageWebScrapeTest {
 		Assert.assertEquals("The result of the Bournemouth, Manchester City match is 0 2", speech);
 	}
 	
-	/*@Test
-	public void getScoreTest(){
-		boolean bool = true;
-		//TODO clean
-		Assert.assertEquals(true, bool);
+	@Test 
+	public void speechletResponseLiveMatchTest() throws SpeechletException{
+		IntentRequest request = buildIntentRequest("Arsenal", "Chelsea", "GetLiveMatchIntent"); // EDIT
+		Session session = buildSession("012345678");
+		System.out.println(bbcLiveMatch);
 		
-		Game game = scrape.getScore(bbcFixture, "Arsenal",  "Chelsea");
-		Assert.assertEquals(game.getHomeTeam(),"Arsenal");
-		Assert.assertEquals(game.getAwayTeam(), "Chelsea");
-	} 
-
-	@Test
-	public void test2() throws SpeechletException {
-		/*IntentRequest request =  buildIntentRequest("Tottenham Hotspur", "Chelsea","getScores");
-		Session session = buildSession("123456789");
-		
-		SpeechletResponse response = speechlet.onIntent(request, session);
+		SpeechletResponse response = speechlet.onIntentTest(request, session, bbcLiveMatch);
 		response.getCard().getTitle();
 		OutputSpeech outputSpeech = response.getOutputSpeech();
 		
-		String speech = ((PlainTextOutputSpeech)outputSpeech).getText();
-		
-		//Assert.assertEquals(speech,"the results of the Chelsea Arsenal game is00"); 
+		String speech = ((PlainTextOutputSpeech)outputSpeech).getText(); //EDIT 
+		Assert.assertEquals("The result of the Arsenal, Chelsea match is 0 0", speech); //EDIT
 	}
-	*/
+	
+	@Test 
+	public void speechletResponseFixtureTest() throws SpeechletException{
+		IntentRequest request = buildIntentRequest("team1","Team2", "GetFixtureIntent"); //EDIT
+		Session session = buildSession("012346789");
+		
+		SpeechletResponse response = speechlet.onIntentTest(request, session, bbcFixture);
+		response.getCard().getTitle();
+		OutputSpeech outputSpeech = response.getOutputSpeech();
+		
+		String speech = ((PlainTextOutputSpeech)outputSpeech).getText();//EDIT
+		Assert.assertEquals("The result of the match is ", speech);//EDIT
+	}
+	
+	@Test
+	public void getFixtureTest2(){
+		String home = "Chelsea";
+		String away = "Everton";
+		String time = "17:30";
+		Match fixture = BBCSportsScrape.getFixture2(bbcFixture, home, away);
+		AssertFixture(home, away, time, fixture);
+	}
+	
+	@Test
+	public void getLiveMatchTest2(){
+		String home = "Arsenal";
+		String away = "Chelsea";
+		int homeScore = 0;
+		int awayScore = 0;
+		String time = "12 mins";
+		
+		Match liveMatch = BBCSportsScrape.getLiveMatch2(bbcLiveMatch, home, away);
+		AssertLiveMatch(home, away, homeScore,  awayScore, time, liveMatch);
+	}
+	
+	@Test
+	public void getResultTest2(){
+		String home = "Bournemouth";
+		String away = "Manchester City";
+		int homeScore = 0;
+		int awayScore = 2;
+		Match result = BBCSportsScrape.getResult2(bbcResult, home, away);
+		AssertResult(home, away, homeScore, awayScore, result);
+	}
+	
+	
+	// TODO Test for can not find team was looking for
 	
 	
 	public IntentRequest buildIntentRequest(String home, String away, String IntentName){
@@ -187,6 +220,8 @@ public class BBCSportsPageWebScrapeTest {
 		Assert.assertEquals(awayScore, result.getAwayScore());
 	} 
 	
+	
+
 	
 	
 

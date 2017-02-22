@@ -2,11 +2,9 @@ package com.louAnimashuan.scores;
 
 public enum MatchStatus {
 	
-	TOSTART, 
+	FIXTURE, 
 	
-	PLAYING,
+	LIVEMATCH,
 	
-	FINISHED
-	
-
+	RESULT
 }

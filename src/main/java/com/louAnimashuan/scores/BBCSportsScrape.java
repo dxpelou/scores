@@ -21,7 +21,7 @@ public class BBCSportsScrape {
 	
 	}
 	
-	public  Document getDocument() throws IOException{
+	public static Document getDocument() throws IOException{
 		return Jsoup.connect(bbcSportsURL).get();
 	}
 	
@@ -65,7 +65,7 @@ public class BBCSportsScrape {
 			}catch(NullPointerException e){
 				continue;
 			}
-			games.add(new Game(homeTeam, awayTeam, null, elapsedTime, MatchStatus.TOSTART));
+			games.add(new Game(homeTeam, awayTeam, null, elapsedTime, MatchStatus.FIXTURE));
 		}
 		
 		for(Element match : liveMatches  ){
@@ -74,7 +74,7 @@ public class BBCSportsScrape {
 			elapsedTime = match.select(".elapsed-Time").first().text();
 			score = match.select(".score").first().text();
 			
-			games.add(new Game(homeTeam, awayTeam, score, elapsedTime, MatchStatus.PLAYING));
+			games.add(new Game(homeTeam, awayTeam, score, elapsedTime, MatchStatus.LIVEMATCH));
 		}
 		
 		for(Element match : results){
@@ -82,7 +82,7 @@ public class BBCSportsScrape {
 			awayTeam = match.select(".team-away").first().text();
 			score = match.select(".score").first().text();
 			
-			games.add(new Game(homeTeam, awayTeam, score, null, MatchStatus.FINISHED));
+			games.add(new Game(homeTeam, awayTeam, score, null, MatchStatus.RESULT));
 		}
 	
 		return games;
@@ -90,115 +90,6 @@ public class BBCSportsScrape {
 	
 	
 	
-	public Game getScore(Document bbcDoc, Map<String, Slot> slots){
-		
-		String homeTeam = slots.get("HomeTeam").getValue();
-		String awayTeam = null;
-
-		if(slots.containsKey("AwayTeam")){
-			awayTeam = slots.get("AwayTeam").getValue();
-		}
-		return getScore(bbcDoc, homeTeam, awayTeam);
-	}
-	
-	public Game getScore(Document bbcDoc, String h, String a){
-		Elements fixtures = bbcDoc.select(".fixture");
-		Elements liveMatches = bbcDoc.select(".live");
-		Elements results = bbcDoc.select(".result");
-		
-		String homeTeam = h;
-		String awayTeam = a;
-		
-	/*	System.out.print("*");
-		System.out.print(h);
-		System.out.print("*");
-		System.out.print(a);
-		System.out.print("*"); */
-		
-		for(Element match : fixtures ){
-			System.out.println("size of fixture(s): "+fixtures.size());
-			try {
-				 String home = match.select(".team-home").first().text();
-				 String away = match.select(".team-away").first().text();
-				 System.out.println("*"+home +"*"+away+"*");
-				 if (homeTeam.equals(home)|| homeTeam.equals(away)){
-					 String score = match.select(".score").first().text();
-					 String time = match.select(".elapsed-time").first().text();
-					 return new Game(home, away, score, time, MatchStatus.TOSTART);
-				 }else{
-					 System.out.println("not found home fixtures");
-				 }
-				 
-				 if( (awayTeam != null && awayTeam.equals(home)) || (awayTeam != null && awayTeam.equals(away))){
-					 String score = match.select(".score").first().text();
-					 String time = match.select(".elapsedTime").first().text();
-					 System.out.println("");
-					 return new Game(home, away, score, time, MatchStatus.TOSTART );
-				 }else{
-					 System.out.println("not found away fixtures");
-				 }
-			}catch(NullPointerException e){
-				System.out.println("continue fixtures");
-				continue;
-			}
-		}
-					
-		for(Element match : liveMatches ){
-			System.out.println("size of liveMatches: " + liveMatches.size());
-			try {
-				 String home = match.select(".team-home").first().text();
-				 String away = match.select(".team-away").first().text();
-				 
-				 	if (homeTeam.equals(home) || homeTeam.equals(away)){
-					String score = match.select(".score").first().text();
-					String time = match.select(".elapsed-time").first().text();
-					return new Game(home, away, score, time, MatchStatus.PLAYING );
-					}else{
-						System.out.println("not found home live match");
-					}
-							 
-					if( (awayTeam != null && awayTeam.equals(home)) || (awayTeam != null && awayTeam.equals(away))){
-						String score = match.select(".score").first().text();
-						String time = match.select(".elapsed-time").first().text();
-						return new Game(home, away, score, time, MatchStatus.PLAYING );
-					}else{
-						System.out.println("not found away live match");
-					}
-			}catch(NullPointerException e){
-				System.out.println("continue live match");
-				continue;
-			}
-		}
-		
-		for (Element match : results){
-			System.out.println("Size of result: " +results.size());
-			try {
-				 String home = match.select(".team-home").first().text();
-				 String away = match.select(".team-away").first().text();
-				 
-					if (homeTeam.equals(home) || homeTeam.equals(away)){
-					String score = match.select(".score").first().text();
-					String time = match.select(".elapsed-time").first().text();
-					return new Game(home, away, score, time, MatchStatus.FINISHED);
-						}else{
-							System.out.println("not found home result");
-						}
-					if( (awayTeam != null && awayTeam.equals(home)) || (awayTeam != null && awayTeam.equals(away))){
-						String score = match.select(".score").first().text();
-						String time = match.select(".elapsed-time").first().text();
-						return new Game(home, away, score, time, MatchStatus.FINISHED);
-						}else{
-							System.out.println("not found away result");
-						}
-			}catch(NullPointerException e){
-				System.out.println("continue result");
-				continue;
-			}
-		}
-		return null;
-	}
-	
-	//new code
 	
 	public static Match getFixture(Document bbcDoc, String h, String a){
 		Elements fixtures = bbcDoc.select(".fixture");
@@ -215,10 +106,8 @@ public class BBCSportsScrape {
 				 if (homeTeam.equals(home)|| homeTeam.equals(away)){
 					 String score = match.select(".score").first().text();
 					 String time = match.select(".elapsed-time").first().text();
-					 System.out.println(time);
 					 time = time.split(" ", 2)[0];
-					 System.out.println(time);
-					 return new Match(home, away, score, time, MatchStatus.TOSTART);
+					 return new Match(home, away, score, time, MatchStatus.FIXTURE);
 				 }
 				 
 				 if( (awayTeam != null && awayTeam.equals(home)) || (awayTeam != null && awayTeam.equals(away))){
@@ -228,7 +117,7 @@ public class BBCSportsScrape {
 					 Pattern r = Pattern.compile(pattern);
 					 time = r.matcher(time).group(0);
 					 
-					 return new Match(home, away, score, time, MatchStatus.TOSTART );
+					 return new Match(home, away, score, time, MatchStatus.FIXTURE );
 				 }
 			}catch(NullPointerException e){
 				continue;
@@ -253,20 +142,15 @@ public class BBCSportsScrape {
 				 	if (homeTeam.equals(home) || homeTeam.equals(away)){
 					String score = match.select(".score").first().text();
 					String time = match.select(".elapsed-time").first().text();
-					return new Match(home, away, score, time, MatchStatus.PLAYING );
-					}else{
-						System.out.println("not found home live match");
+					return new Match(home, away, score, time, MatchStatus.LIVEMATCH );
 					}
 							 
 					if( (awayTeam != null && awayTeam.equals(home)) || (awayTeam != null && awayTeam.equals(away))){
 						String score = match.select(".score").first().text();
 						String time = match.select(".elapsed-time").first().text();
-						return new Match(home, away, score, time, MatchStatus.PLAYING );
-					}else{
-						System.out.println("not found away live match");
+						return new Match(home, away, score, time, MatchStatus.LIVEMATCH );
 					}
 			}catch(NullPointerException e){
-				System.out.println("continue live match");
 				continue;
 			}
 		}
@@ -276,7 +160,6 @@ public class BBCSportsScrape {
 	
 	public static Match getResult(Document bbcDoc, String h, String a){
 		Elements results = bbcDoc.select(".report");
-		//System.out.println("Size of result: " +results.size());
 		String homeTeam = h;
 		String awayTeam = a;
 		
@@ -285,41 +168,75 @@ public class BBCSportsScrape {
 				 String home = match.select(".team-home").first().text();
 				 String away = match.select(".team-away").first().text();
 				 
-				 //System.out.format("home: %s homeAssert: %s, away: %s awayAssert:%s", home, away, h, a);
-				 
 					if (homeTeam.equals(home) || homeTeam.equals(away)){
 						String score = match.select(".score").first().text();
 						String time = match.select(".elapsed-time").first().text();
-						return new Match(home, away, score, time, MatchStatus.FINISHED);
-					}else{
-							System.out.println("not found home result");
-						}
+						return new Match(home, away, score, time, MatchStatus.RESULT);
+					}
+					
 					if( (awayTeam != null && awayTeam.equals(home)) || (awayTeam != null && awayTeam.equals(away))){
 						String score = match.select(".score").first().text();
 						String time = match.select(".elapsed-time").first().text();
-						return new Match(home, away, score, time, MatchStatus.FINISHED);
-						}else{
-							System.out.println("not found away result");
-						}
+						return new Match(home, away, score, time, MatchStatus.RESULT);
+					}
 			}catch(NullPointerException e){
-				System.out.println("continue result");
 				continue;
 			}
 		}
 		return null;
 	}
 
-
+	//NOT IN USE
+	private static Match getMatch(Document doc, String h, String a, MatchStatus status, String selector){
+		
+		Elements results = doc.select(selector);
+		String homeTeam = h;
+		String awayTeam = a;
+		
+		for(Element match : results){
+			try {
+				 String home = match.select(".team-home").first().text();
+				 String away = match.select(".team-away").first().text();
+				 
+				if (homeTeam.equals(home) || homeTeam.equals(away)){
+					String score = match.select(".score").first().text();
+					String time = match.select(".elapsed-time").first().text();
+					return new Match(home, away, score, time, status);
+				}
+					
+				if( (awayTeam != null && awayTeam.equals(home)) || (awayTeam != null && awayTeam.equals(away))){
+					String score = match.select(".score").first().text();
+					String time = match.select(".elapsed-time").first().text();
+					return new Match(home, away, score, time, status);
+				}
+			}catch(NullPointerException e){
+				continue;
+			}
+		}	
+		return null;
+	}
 	
-	public boolean currentlyPlaying(String team) throws IOException{
+	
+	//NOT IN  USE
+	public static Match getResult2(Document doc, String h, String a ){
+		MatchStatus status = MatchStatus.RESULT;
+		String selector = ".report";
 		
-		boolean isPlaying = false;
-		//TODO implement isCurrentlyPlaying Method
-		Document doc = Jsoup.connect(bbcSportsURL).get();
+		return getMatch(doc, h, a, status, selector);
+	}
+	
+	//NOT IN USE
+	public static Match getFixture2(Document doc, String h, String a ){
+		MatchStatus status = MatchStatus.FIXTURE;
+		String selector = ".fixture";
 		
-		return isPlaying;
-		
-
+		return getMatch(doc, h,  a, status, selector);
+	}
+	//NOT IN USE
+	public static Match getLiveMatch2(Document doc, String h, String a){
+		MatchStatus status = MatchStatus.LIVEMATCH;
+		String selector = ".live";
+		return getMatch(doc, h, a, status, selector);
 	}
 	
 }

@@ -22,7 +22,7 @@ public class Match {
 		
 	private void setScore(String score){
 			String[] scores = null;
-			if(status == MatchStatus.PLAYING || status == MatchStatus.FINISHED ){
+			if(status == MatchStatus.LIVEMATCH || status == MatchStatus.RESULT ){
 				scores = score.split(" - ");
 				this.homeScore = Integer.parseInt(scores[0]);
 				this.awayScore = Integer.parseInt(scores[1]);
